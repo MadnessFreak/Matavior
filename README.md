@@ -9,6 +9,11 @@ Components
 #####The Request
 To access request data Matavoir provides two arrays. The first array provides all parts of the URL and the other one provides all GET parameters if they're set. Below you can see an example how the two arrays might be look like.
 
+```
+GET /members/profile/MadnessFreak?category=settings&tab=privacy HTTP/1.1
+Host: www.example.net
+```
+
 ```php
 Array
 (
