@@ -17,10 +17,10 @@ class Autoloader {
 	}
 
 	/**
-     * Handles autoloading of classes.
-     *
-     * @param string $class
-     */
+	 * Handles autoloading of classes.
+	 * 
+	 * @param string $class
+	 */
 	public static function load($class)
 	{
 		$cache = Utility::unidir(SYS_DIR . 'Cache/Autoloader.cache');
