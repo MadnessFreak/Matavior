@@ -3,7 +3,7 @@
  * Matavior
  * 
  * @author    MadnessFreak <madnessfreak@happyduckz.co>
- * @copyright	2014 MadnessFreak
+ * @copyright 2014 MadnessFreak
  * @package   Matavior
  */
 
