@@ -16,13 +16,13 @@ class Invoker {
 		// create controller name
 		$className = ucfirst($name) . 'Controller';
 		$path = Utility::unidir(SYS_DIR . 'Controller/' . $className . '.php');
-		
+
 		// try invoke
 		if (file_exists($path)) {
 			$controller = new $className();
 			$controller->init();
 		} else {
-			if (Mata::debugModeIsEnabled()) echo "Invoking $name failed. Could not find $path.<br>";
+			throw new NotFoundException("Invoking $name failed. Could not find $path.");
 		}
 	}
 }
