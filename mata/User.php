@@ -32,11 +32,21 @@ class User {
 	 */
 	public function __construct() {
 		$this->data = array();
-		$this->data['userID'] = 1;
-		$this->data['username'] = 'MadnessFreak';
 	}
 
-	/* ************************************************ */	
+	/* ************************************************ */
+
+	public static function create() {
+		$user = new User();
+		$user->addData();
+		return $user;
+	}
+
+	public function addData() {
+		$this->data = array();
+		$this->data['userID'] = 1;
+		$this->data['username'] = 'MadnessFreak'; // for test purposes
+	}
 
 	/**
 	 * Returns username.

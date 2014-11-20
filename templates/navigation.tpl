@@ -16,7 +16,8 @@
         {% endfor %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        {% if SESSION.LoggedIn %}
+        {% if SESSION.loggedIn %}
+          <li><span>Welcome <a href="/account">{{ SESSION.username }}</a></span></li>
           <li><a href="/logout">Logout</a></li>
         {% else %}
           <li><a href="/login">Login</a></li>

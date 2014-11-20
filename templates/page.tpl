@@ -1,6 +1,6 @@
 {% if EXCEPTION and EXCEPTION.Class != 'NotFoundException' %}
 <div class="container">
-  <div class="alert alert-dismissable alert-info">
+  <div class="alert alert-dismissable alert-danger">
     {{ EXCEPTION.Message|raw }}
   </div>
 </div>

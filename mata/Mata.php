@@ -16,7 +16,6 @@ define('MATA_VERSION', '0.1120.14');
 class Mata {
 	protected static $templateObj = null;
 	protected static $sessionObj = null;
-	protected static $userObj = null;
 
 	/* ************************************************ */
 
@@ -33,13 +32,10 @@ class Mata {
 		// init
 		self::initTemplateEngine();
 		self::initSession();
-		self::$userObj = new User();
+		self::setUser(new User());
 
 		// debug
 		Debug::add('SESSION', print_r($_SESSION, true));
-		Debug::add('USER', print_r(array(
-			'userID' => self::$userObj->userID, 
-			'username' => self::$userObj->username), true));
 
 		// display debug
 		if (self::debugModeIsEnabled()) Debug::display();
@@ -129,7 +125,11 @@ class Mata {
 	}
 
 	public static function getUser() {
-		return self::$userObj;
+		return self::$sessionObj->user;
+	}
+
+	public static function setUser($user) {
+		self::$sessionObj->register('user', $user);
 	}
 	
 	/* ************************************************ */
