@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Provides a class for handling http requests.
  * 
  * @author    MadnessFreak <madnessfreak@happyduckz.co>
@@ -64,10 +64,11 @@ class Request
 		$parts = explode('/', $_SERVER['REQUEST_URI']);
 		$count = count($parts);
 		for ($i = 1; $i < $count; $i++) { 
+			$num = $i - 1;
 			if ($i == ($count - 1)) {
 				$queries = explode('?', $parts[$i]);
 				if (count($queries) > 1) {
-					self::$uri[$i] = $queries[0];
+					self::$uri[$num] = $queries[0];
 					$queries = explode('&', $queries[1]);
 
 					for ($j = 0; $j < count($queries); $j++) { 
@@ -75,10 +76,10 @@ class Request
 						self::$params[$pair[0]] = $pair[1];
 					}
 				} else {
-					self::$uri[$i] = $parts[$i];
+					self::$uri[$num] = $parts[$i];
 				}
 			} else {
-				self::$uri[$i] = $parts[$i];
+				self::$uri[$num] = $parts[$i];
 			}
 		}
 
@@ -90,9 +91,12 @@ class Request
 			self::validate($param);
 		}
 
-		// print (debug purposes)
-		print_r(self::$uri);
-		print_r(self::$params);
+		// assign variables
+		Mata::getTPL()->assign('REQUEST_PAGE', self::getPage());
+		Mata::getTPL()->assign('REQUEST_ACTION', self::getAction());
+		Mata::getTPL()->assign('REQUEST_VALUE', self::getValue());
+		Mata::getTPL()->assign('REQUEST_URI_PARTS', self::getUriParts());
+		Mata::getTPL()->assign('REQUEST_PARAMS', self::getParams());
 	}
 
 	/**
@@ -159,7 +163,7 @@ class Request
 	 * @return	string
 	 */
 	public static function getPage() {
-		return isset(self::$uri[0]) ? self::$uri[0] : '';
+		return empty(self::$uri[0]) ? 'index' : self::$uri[0];
 	}
 
 	/**

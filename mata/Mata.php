@@ -4,7 +4,7 @@
 define('TIME_NOW', time());
 
 // define version
-define('MATA_VERSION', '0.1119.14');
+define('MATA_VERSION', '0.1120.14');
 
 /**
 * Provides the application central class.
@@ -14,6 +14,12 @@ define('MATA_VERSION', '0.1119.14');
 * @package    Matavior
 */
 class Mata {
+	protected static $templateObj = null;
+	protected static $sessionObj = null;
+	protected static $userObj = null;
+
+	/* ************************************************ */
+
 	/**
 	 * Initializes Matavoir.
 	 */
@@ -23,6 +29,20 @@ class Mata {
 
 		// preload
 		self::preload();
+
+		// init
+		self::initTemplateEngine();
+		self::initSession();
+		self::$userObj = new User();
+
+		// debug
+		Debug::add('SESSION', print_r($_SESSION, true));
+		Debug::add('USER', print_r(array(
+			'userID' => self::$userObj->userID, 
+			'username' => self::$userObj->username), true));
+
+		// display debug
+		if (self::debugModeIsEnabled()) Debug::display();
 
 		// handle
 		self::handle();
@@ -59,11 +79,37 @@ class Mata {
 	 */
 	protected static function preload() {
 		// include
+		require_once 'Config/Config.inc.php';
 		require_once 'Utility.php';
 		require_once 'Autoloader.php';
 
 		// register
 		Autoloader::register();
+	}
+
+	/**
+	 * Initializes the template engine.
+	 */
+	protected static function initTemplateEngine() {
+		// create
+		self::$templateObj = new TemplateEngine();
+
+		// assign
+		$defines = get_defined_constants(true)['user'];
+		foreach ($defines as $key => $value) {
+			self::$templateObj->assign($key, $value);
+		}
+	}
+
+	/**
+	 * Initializes the session.
+	 */
+	protected static function initSession() {
+		// create
+		self::$sessionObj = new Session();
+
+		// assign
+		Mata::getTPL()->assign('SESSION', $_SESSION);
 	}
 	
 	/**
@@ -71,6 +117,19 @@ class Mata {
 	 */
 	protected static function handle() {
 		Request::handle();
+		Invoker::invoke(Request::getPage());
+	}
+
+	public static function getTPL() {
+		return self::$templateObj;
+	}
+
+	public static function getSession() {
+		return self::$sessionObj;
+	}
+
+	public static function getUser() {
+		return self::$userObj;
 	}
 	
 	/* ************************************************ */
@@ -83,6 +142,10 @@ class Mata {
 	public static final function handleException(Exception $e) {
 		try {
 			if ($e instanceof SystemException) {
+				$e->show();
+				exit;
+			}
+			elseif ($e instanceof UserException) {
 				$e->show();
 				exit;
 			}
