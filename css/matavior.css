@@ -1,0 +1,91 @@
+body {
+	background-color: #f9f9f9;
+	padding-top: 50px;
+}
+
+footer {
+	background-color: #f9f9f9;
+	border-top: 1px solid #e5e5e5;
+	padding: 40px 0;
+	color: #999;
+}
+
+footer p {
+	clear: left;
+	margin-bottom: 0;
+}
+
+footer li {
+	float: left;
+	margin-right: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+footer > div > div > div.col-lg-12.exception {
+	margin-top: 15px;
+}
+
+footer > div > div > div.col-lg-12.exception p {
+	padding-bottom: 5px; 
+}
+
+.breadcrumb {
+	background-color: #ecf0f1 !important;
+	margin-top: 20px;
+}
+
+.breadcrumb > li + li:before {
+	content: ">\00a0" !important;
+}
+
+.breadcrumb > li > i {
+	color: #428bca;
+}
+
+.container .center {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+div.alert {
+	position: relative;
+	padding: 11px 14px 11px 48px !important;
+}
+div.alert:after {
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 0;
+	display: inline-block;
+	height: 24px;
+	left: 13px;
+	position: absolute;
+	top: 50%;
+	width: 24px;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+div.alert-warning:after {
+	content: "\e101";
+}
+div.alert-info:after {
+	content: "\e086";
+}
+div.alert-danger:after {
+	content: "\e083";
+}
+div.alert-success:after {
+	content: "\e084";
+}
+
+div.alert-question {
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+div.alert-question:after {
+	content: "\e085";
+}
