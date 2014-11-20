@@ -11,21 +11,35 @@ class LoginController extends AbstractController {
 	 * @see	\Controller\IController::init()
 	 */
 	public function init() {
-		// login
-		Mata::getSession()->register('LoggedIn', true);
+		// check permission
+		$this->checkPermissions();
 
-		// refresh
-		$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/index';
-		header("Refresh: 3; $referer");
+		// execute
+		$this->execute();
 
 		// show
-		parent::show();
+		parent::init();
 	}
 
 	/**
 	 * @see	\Controller\IController::checkPermissions()
 	 */
 	public function checkPermissions() {
-		//throw new PermissionDeniedException();
+		// check if active user is logged in
+		if (Mata::getUser()->userID || Mata::getSession()->loggedIn) {
+			throw new PermissionDeniedException();
+		}
+	}
+
+	public function execute() {
+		// login
+		Mata::setUser(User::create());
+		Mata::getSession()->register('loggedIn', true);
+		Mata::getSession()->register('userID', Mata::getUser()->userID);
+		Mata::getSession()->register('username', Mata::getUser()->username);
+
+		// refresh
+		$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/index';
+		header("Refresh: 3; $referer");
 	}
 }

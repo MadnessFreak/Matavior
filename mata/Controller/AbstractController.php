@@ -23,8 +23,26 @@ abstract class AbstractController implements IController {
 	 * @see	\Controller\IController::init()
 	 */
 	public function init() {
+		// call basic methods
+		$this->addNavigation();
+
+		// check permission
+		$this->checkPermissions();
+
 		// call default methods
 		$this->show();
+	}
+
+	public function addNavigation() {
+		$navigation = array(
+			array('navID' => 1, 'navName' => 'Dashboard', 'navLink' => 'dashboard'),
+			array('navID' => 2, 'navName' => 'Members', 'navLink' => 'members'),
+			array('navID' => 3, 'navName' => 'Team', 'navLink' => 'members/team'),
+			array('navID' => 4, 'navName' => 'Community', 'navLink' => 'community'),
+			array('navID' => 5, 'navName' => 'Search', 'navLink' => 'search')
+			);
+
+		Mata::getTPL()->assign('navigation', $navigation);
 	}
 
 	/**
@@ -41,9 +59,6 @@ abstract class AbstractController implements IController {
 		if ($this->loginRequired && !Mata::getUser()->userID) {
 			throw new PermissionDeniedException();
 		}
-
-		// check permission
-		$this->checkPermissions();
 
 		// show template
 		Mata::getTPL()->display();

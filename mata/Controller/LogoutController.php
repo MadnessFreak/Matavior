@@ -15,6 +15,6 @@ class LogoutController extends AbstractController {
 
 		header('Refresh: 3; /index');
 		
-		parent::show();
+		parent::init();
 	}
 }

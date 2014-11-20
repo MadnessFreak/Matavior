@@ -47,6 +47,17 @@ footer > div > div > div.col-lg-12.exception p {
   text-align: center;
 }
 
+.nav > li > span {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.navbar-inverse .navbar-nav > li > span {
+	color: #fff;
+}
+
 div.alert {
 	position: relative;
 	padding: 11px 14px 11px 48px !important;
