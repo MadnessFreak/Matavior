@@ -11,6 +11,11 @@ class TemplateEngine {
 	 * template engine object
 	 */
 	protected $engine = null;
+
+	/**
+	 * provides a value indicating whether the template has already been rendered
+	 */
+	protected $rendered = false;
 	
 	/* ************************************************ */
 	
@@ -49,12 +54,25 @@ class TemplateEngine {
 	public function assign($name, $value) {
 		$this->engine->addGlobal($name, $value);
 	}
+
+	/**
+	 * Registers a Filter.
+	 * 
+	 * @param	string	name
+	 */
+	public function addFilter($name) {
+		$this->engine->addFilter($name);
+	}
 	
 	/**
 	 * Displays the template.
 	 */
 	public function display()
 	{
+		if ($this->rendered) return;
+		
 		echo $this->engine->render('index.tpl');
+
+		$this->rendered = true;
 	}
 }
