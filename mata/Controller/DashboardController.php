@@ -1,12 +1,12 @@
 <?php
 /**
- * Shows the index page.
+ * Shows the dashboard page.
  * 
  * @author    MadnessFreak <madnessfreak@happyduckz.co>
  * @copyright 2014 MadnessFreak
  * @package   Matavior
  */
-class AccountController extends AbstractController {
+class DashboardController extends AbstractController {
 	/**
 	 * @see	\Controller\IController::init()
 	 */

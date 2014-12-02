@@ -14,11 +14,50 @@ class LoginController extends AbstractController {
 		// check permission
 		$this->checkPermissions();
 
-		// execute
-		$this->execute();
+		// read
+		$this->readParameters();
 
 		// show
 		parent::init();
+	}
+
+	/**
+	 * @see	\Controller\IController::readParameters()
+	 */
+	public function readParameters() {
+		if ($_SERVER['REQUEST_METHOD'] != 'POST') return;
+
+		$fields = array();
+		$error = array(
+			'type' => 'danger',
+			'message' => 'Please correct the erroneous fields marked below.'
+			);
+
+		if (!isset($_POST['username']) || $_POST['username'] != 'MadnessFreak') {
+			array_push($fields, 'username');
+			$error['message'] = 'The entered username does not exist.';
+		}
+		if (!isset($_POST['password']) || $_POST['password'] != 'test123') {
+			array_push($fields, 'password');
+			$error['message'] = 'The entered password is wrong.';
+		}
+		if ($_POST['username'] == 'MadnessFreak' && $_POST['password'] == 'test123') {
+			$error['type'] = 'success';
+			$error['message'] = Mata::getLang()->get('mata.global.login.success') . '<br>' . Mata::getLang()->get('mata.global.redirection');
+		}
+
+		$error['fields'] = $fields;
+
+		$action = array(
+			'method' => $_SERVER['REQUEST_METHOD'],
+			'error' => $error
+			);
+
+		Mata::getTPL()->assign('action', $action);
+
+		if ($error['type'] == 'success') {
+			$this->execute();
+		}
 	}
 
 	/**
@@ -26,20 +65,22 @@ class LoginController extends AbstractController {
 	 */
 	public function checkPermissions() {
 		// check if active user is logged in
-		if (Mata::getUser()->userID || Mata::getSession()->loggedIn) {
+		if (Mata::getSession()->loggedIn) {
 			throw new PermissionDeniedException();
 		}
 	}
 
+	/**
+	 * Performs the login.
+	 */
 	public function execute() {
 		// login
 		Mata::setUser(User::create());
 		Mata::getSession()->register('loggedIn', true);
-		Mata::getSession()->register('userID', Mata::getUser()->userID);
-		Mata::getSession()->register('username', Mata::getUser()->username);
+		Mata::getSession()->register('userID', Mata::getSession()->user->userID);
+		Mata::getSession()->register('username', Mata::getSession()->user->username);
 
 		// refresh
-		$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/index';
-		header("Refresh: 3; $referer");
+		header("Refresh: 3; " . (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/index'));
 	}
 }

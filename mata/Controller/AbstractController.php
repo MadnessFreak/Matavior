@@ -26,9 +26,6 @@ abstract class AbstractController implements IController {
 		// call basic methods
 		$this->addNavigation();
 
-		// check permission
-		$this->checkPermissions();
-
 		// call default methods
 		$this->show();
 	}
@@ -38,11 +35,28 @@ abstract class AbstractController implements IController {
 			array('navID' => 1, 'navName' => 'Dashboard', 'navLink' => 'dashboard'),
 			array('navID' => 2, 'navName' => 'Members', 'navLink' => 'members'),
 			array('navID' => 3, 'navName' => 'Team', 'navLink' => 'members/team'),
-			array('navID' => 4, 'navName' => 'Community', 'navLink' => 'community'),
-			array('navID' => 5, 'navName' => 'Search', 'navLink' => 'search')
+			array('navID' => 4, 'navName' => 'Blog', 'navLink' => 'blog'),
+			array('navID' => 5, 'navName' => 'Community', 'navLink' => 'community'),
+			array('navID' => 6, 'navName' => 'Search', 'navLink' => 'search')
 			);
 
 		Mata::getTPL()->assign('navigation', $navigation);
+	}
+
+	public function addPagination($count = 1) {
+		$value = Request::getValue();
+		$action = Request::getAction();
+		$value = empty($value) ? 1 : $value;
+		$page = !empty($action) && $action != 'page' ? 1 : $value;
+
+		if (is_numeric($page)) {
+			Mata::getTPL()->assign('paginationActive', $page);
+			Mata::getTPL()->assign('paginationCount', $count);
+		} else {
+			throw new UserException("Pagination page number is not valid ($page)");
+		}
+
+		return $page;
 	}
 
 	/**
@@ -56,7 +70,7 @@ abstract class AbstractController implements IController {
 	 */
 	public function show() {
 		// check if active user is logged in
-		if ($this->loginRequired && !Mata::getUser()->userID) {
+		if ($this->loginRequired && !Mata::getSession()->loggedIn) {
 			throw new PermissionDeniedException();
 		}
 
