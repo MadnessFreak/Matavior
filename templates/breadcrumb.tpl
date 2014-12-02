@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-lg-12">
       <ul class="breadcrumb">
-        <li><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;<a href="/dashboard">Dashboard</a></li>
-        {% if REQUEST_ACTION != '' %}
+        <li><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;<a href="/{{ SESSION.loggedIn ? 'dashboard' : '' }}">{{ PAGE_TITLE }}</a></li>
+        {% if REQUEST_ACTION != '' and REQUEST_ACTION != 'page' %}
         <li><a href="/{{ REQUEST_PAGE }}">{{ REQUEST_PAGE|capitalize }}</a></li>
         <li class="active">{{ REQUEST_ACTION|capitalize }}</li>
         {% else %}{# WITHOUT ACTION #}

@@ -1,3 +1,3 @@
 <div class="alert alert-success" role="alert">
-  You have been successfully logged out.<br>Please click <a href="/">here</a> if the automatic redirection does not work!
+  <p>{{ 'mata.global.logout.success'|lang }}<br>{{ 'mata.global.redirection'|lang|raw }}</p>
 </div>

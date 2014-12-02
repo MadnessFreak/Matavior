@@ -1,0 +1,67 @@
+{% include 'pageHeader.tpl' with { 'pageTitle' : 'Blog' } %}
+
+<div class="blog">
+	<div class="entry">
+		<div class="media">
+			<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+			<div class="media-body">
+				<h4 class="media-heading"><a href="/blog/entry/123-Lorem-ipsum-dolor-sit">Lorem ipsum dolor sit</a></h4>
+				<small><a href="/members/profile/MadnessFreak">MadnessFreak</a> - <time datetime="2014-11-02T09:00:00+02:00">Nov 2nd 2014</time></small>
+			</div>
+		</div>
+		<hr>
+		<div class="preview">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+	</div>
+	<div class="entry">
+		<div class="media">
+			<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+			<div class="media-body">
+				<h4 class="media-heading"><a href="/blog/entry/123-Duis-autem-vel-eum">Duis autem vel eum</a></h4>
+				<small><a href="/members/profile/MadnessFreak">MadnessFreak</a> - <time datetime="2014-11-02T09:00:00+02:00">Nov 2nd 2014</time></small>
+			</div>
+		</div>
+		<hr>
+		<div class="preview">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+	</div>
+	<div class="entry">
+		<div class="media">
+			<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+			<div class="media-body">
+				<h4 class="media-heading"><a href="/blog/entry/123-Ut-wisi-enim-ad-minim-veniam">Ut wisi enim ad minim veniam</a></h4>
+				<small><a href="/members/profile/MadnessFreak">MadnessFreak</a> - <time datetime="2014-11-02T09:00:00+02:00">Nov 2nd 2014</time></small>
+			</div>
+		</div>
+		<hr>
+		<div class="preview">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.<br><br>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </div>
+	</div>
+</div>
+
+<style type="text/css">
+.blog { margin: 10px 0 10px 0; }
+.blog > div.entry { 
+	width: 100%;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 10px;
+	overflow: hidden;
+	background-color: #fff;
+}
+.blog > div.entry:nth-child(even) { 
+	background-color: #f9f9f9;
+}
+.blog > div.entry:hover { background-color: #ecf0f1; }
+.blog > div.entry:first-child { border-radius: 4px 4px 0 0; }
+.blog > div.entry:last-child { border-radius: 0 0 4px 4px; border-bottom: 1px solid #ddd; }
+.blog > div.entry > div { padding: 5px; }
+.blog > div.entry > hr { margin: 2px; }
+.blog > div.entry img { width: 40px; height: 40px; }
+
+.blog .media-heading { margin: 0; }
+
+.framed > img {
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	padding: 1px;
+}
+</style>

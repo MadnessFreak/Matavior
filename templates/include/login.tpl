@@ -1,3 +1,41 @@
-<div class="alert alert-success" role="alert">
-  You have been successfully logged in.<br>Please click <a href="/">here</a> if the automatic redirection does not work!
+<header class="headline">
+	<h3>{{ 'mata.global.login'|lang }}</h3><hr>
+</header>
+
+{% include 'alert.tpl' %}
+
+{% if action.error.type != 'success' %}
+<div class="row">
+	<div class="col-lg-12">
+		<form class="form-horizontal well" role="form" method="post">
+			<fieldset>
+				<legend>{{ 'mata.global.credentials'|lang }}</legend>
+				<div class="form-group{% if 'username' in action.error.fields|keys %} has-error{% endif %}">
+					<label for="username" class="col-sm-3 control-label">{{ 'mata.global.username'|lang }}</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" name="username" id="username" placeholder="{{ 'mata.global.username'|lang }}">
+					</div>
+				</div>
+				<div class="form-group{% if 'password' in action.error.fields|keys %} has-error{% endif %}">
+					<label for="password" class="col-sm-3 control-label">{{ 'mata.global.password'|lang }}</label>
+					<div class="col-sm-6">
+						<input type="password" class="form-control" name="password" id="password" placeholder="{{ 'mata.global.password'|lang }}">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-10">
+						<div class="checkbox">
+							<label><input type="checkbox" name="remember"> {{ 'mata.global.login.remember'|lang }}</label>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-10">
+					<button type="submit" class="btn btn-default">{{ 'mata.global.button.login'|lang }}</button>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
+{% endif %}

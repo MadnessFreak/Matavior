@@ -17,10 +17,10 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if SESSION.loggedIn %}
-          <li><span>Welcome <a href="/account">{{ SESSION.username }}</a></span></li>
-          <li><a href="/logout">Logout</a></li>
+          <li><span>{{ 'mata.global.welcome'|lang }} <a href="/account">{{ SESSION.username }}</a></span></li>
+          <li><a href="/logout">{{ 'mata.global.logout'|lang }}</a></li>
         {% else %}
-          <li><a href="/login">Login</a></li>
+          <li><a href="/login">{{ 'mata.global.button.login'|lang }}</a></li>
         {% endif %}
       </ul>
     </div>
