@@ -96,7 +96,7 @@
 					<h2>Information:</h2>
 					<p>
 						<?php if (!$this->getHash()) { ?>
-							Unable to write log file, please make &quot;<?php echo Utility::unifyDirSeparator(WCF_DIR); ?>log/&quot; writable!
+							Unable to write log file, please make &quot;<?php echo Utility::unidir(SYS_DIR); ?>log/&quot; writable!
 						<?php } else { ?>
 							<b>ID:</b> <code><?php echo $this->getHash(); ?></code><br>
 							<?php echo $innerMessage; ?>

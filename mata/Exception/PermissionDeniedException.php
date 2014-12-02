@@ -13,7 +13,7 @@ class PermissionDeniedException extends UserException {
 	public function show() {
 		@header('HTTP/1.0 403 Forbidden');
 
-		$this->exceptionData['Message'] = LANG_PERMISSION_DENIED;
+		$this->exceptionData['Message'] = Mata::getLang()->get('mata.global.error.permissionDenied');
 
 		parent::show();
 	}

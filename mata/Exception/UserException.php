@@ -6,7 +6,7 @@
  * @copyright 2014 MadnessFreak
  * @package   Matavior
  */
-abstract class UserException extends Exception {
+class UserException extends Exception {
 	/**
 	 * stores the exception data for the template
 	 */
@@ -33,5 +33,6 @@ abstract class UserException extends Exception {
 	public function show() {
 		Mata::getTPL()->assign('EXCEPTION', $this->exceptionData);
 		Mata::getTPL()->display();
+		exit;
 	}
 }
