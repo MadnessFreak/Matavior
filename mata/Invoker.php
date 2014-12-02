@@ -22,7 +22,17 @@ class Invoker {
 			$controller = new $className();
 			$controller->init();
 		} else {
-			throw new NotFoundException("Invoking $name failed. Could not find $path.");
+			$className = 'EmptyController';
+			$path = Utility::unidir(SYS_DIR . 'Controller/EmptyController.php');
+
+			if (file_exists($path)) {
+				$controller = new $className();
+				$controller->init();
+			} else {
+				throw new SystemException("Invoking $name failed. Could not find controller $path.");
+			}
+
+			//throw new NotFoundException("Invoking $name failed. Could not find controller $path.");
 		}
 	}
 }
