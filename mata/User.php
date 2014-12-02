@@ -46,6 +46,36 @@ class User {
 		$this->data = array();
 		$this->data['userID'] = 1;
 		$this->data['username'] = 'MadnessFreak'; // for test purposes
+		$this->data['email'] = 'madnessfreak@happyduckz.co';
+		$this->data['birthday'] = 817603200;
+		$this->data['gender'] = 1;
+	}
+
+	/**
+	 * Returns the userID.
+	 *
+	 * @return	int
+	 */
+	public function getUserID() {
+		return !empty($this->userID) ?  $this->userID : 0;
+	}
+
+	/**
+	 * Returns the username.
+	 *
+	 * @return	string
+	 */
+	public function getUsername() {
+		return !empty($this->username) ?  $this->username : null;
+	}
+
+	/**
+	 * Returns the user data.
+	 *
+	 * @return	array
+	 */
+	public function getUserData() {
+		return $this->data;
 	}
 
 	/**
@@ -53,7 +83,7 @@ class User {
 	 * 
 	 * @return	string
 	 */
-	public function __toString() {
-		return $this->username;
-	}
+	/*public function __toString() {
+		return $this->getUsername();
+	}*/
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://matavior.rewtek.net" languagecode="de" languagename="Deutsch">
+	<category name="mata.test">
+		<item name="mata.test.string"><![CDATA[String]]></item>
+	</category>
+
+	<category name="mata.date">
+		<item name="mata.date.dateFormat"><![CDATA[j. M Y]]></item>
+		<item name="mata.date.timeFormat"><![CDATA[G:i \U\h\r]]></item>
+
+		<!-- variables for time periods -->
+		<item name="mata.date.period.older"><![CDATA[Älter]]></item>
+		<item name="mata.date.period.today"><![CDATA[Heute]]></item>
+		<item name="mata.date.period.yesterday"><![CDATA[Gestern]]></item>
+
+		<!-- variables for localized date formats -->
+		<item name="mata.date.hour"><![CDATA[Stunde]]></item>
+		<item name="mata.date.minute"><![CDATA[Minute]]></item>
+	</category>
+
+	<category name="mata.global">
+		<item name="mata.global.backtotop"><![CDATA[Zum Seitenanfang]]></item>
+		<item name="mata.global.button.add"><![CDATA[Hinzufügen]]></item>
+		<item name="mata.global.button.back"><![CDATA[Zurück]]></item>
+		<item name="mata.global.button.cancel"><![CDATA[Abbrechen]]></item>
+		<item name="mata.global.button.close"><![CDATA[Schließen]]></item>
+		<item name="mata.global.button.delete"><![CDATA[Löschen]]></item>
+		<item name="mata.global.button.login"><![CDATA[Anmelden]]></item>
+		<item name="mata.global.button.submit"><![CDATA[Absenden]]></item>
+		<item name="mata.global.button.reset"><![CDATA[Zurücksetzen]]></item>
+		<item name="mata.global.credentials"><![CDATA[Zugangsdaten]]></item>
+		<item name="mata.global.error.notfound"><![CDATA[Nicht gefunden]]></item>
+		<item name="mata.global.error.notfound.desc"><![CDATA[Es tut uns leid, aber die Seite die Sie versuchen aufzurufen, gibt es nicht.]]></item>
+		<item name="mata.global.error.notfound.kidding"><![CDATA[Warum versuchen Sie keine Seite die geht? Versuchen Sie unsere Webseite zu manipulieren oder was?<br>Ich meine - was ist das Problem? Bewegung. Hier gibt es nichts zu sehen.]]></item>
+		<item name="mata.global.error.illegalLink"><![CDATA[Der Link, den Sie versuchen aufzurufen, ist nicht mehr verfügbar oder ungültig.]]></item>
+		<item name="mata.global.error.permissionDenied"><![CDATA[Zugriff verwehrt. Sie sind nicht berechtigt, diese Seite aufzurufen.]]></item>
+		<item name="mata.global.manageAccount"><![CDATA[Konto verwalten]]></item>
+		<item name="mata.global.login"><![CDATA[Anmeldung]]></item>
+		<item name="mata.global.login.success"><![CDATA[Du wurdest erfolgreich angemeldet.]]></item>
+		<item name="mata.global.login.remember"><![CDATA[Anmeldung speichern]]></item>
+		<item name="mata.global.logout"><![CDATA[Abmelden]]></item>
+		<item name="mata.global.logout.success"><![CDATA[Du wurdest erfolgreich abgemeldet.]]></item>
+		<item name="mata.global.redirection"><![CDATA[Bitte klicken Sie <a href="/">hier</a>, wenn die automatische Weiterleitung nicht funktioniert.]]></item>
+		<item name="mata.global.username"><![CDATA[Benutzername]]></item>
+		<item name="mata.global.password"><![CDATA[Passwort]]></item>
+		<item name="mata.global.profile"><![CDATA[Profil]]></item>
+		<item name="mata.global.notifications"><![CDATA[Benachrichtigungen]]></item>
+		<item name="mata.global.messages"><![CDATA[Nachrichten]]></item>
+		<item name="mata.global.welcome"><![CDATA[Willkommen]]></item>
+		<item name="mata.global.general"><![CDATA[Allgemein]]></item>
+		<item name="mata.global.security"><![CDATA[Sicherheit]]></item>
+		<item name="mata.global.birthday"><![CDATA[Geburtstag]]></item>
+		<item name="mata.global.gender"><![CDATA[Geschlecht]]></item>
+		<item name="mata.global.gender.no"><![CDATA[Keine Angabe]]></item>
+		<item name="mata.global.gender.male"><![CDATA[Männlich]]></item>
+		<item name="mata.global.gender.female"><![CDATA[Weiblich]]></item>
+		<item name="mata.global.footer"><![CDATA[<p>Mit Liebe erstellt von <a href="http://github.com/MadnessFreak" target="_blank">MadnessFreak</a>.</p>
+				<p>Basierend auf <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons von <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a>. Schriftarten von <a href="http://www.google.com/webfonts" target="_blank">Google</a>.</p>]]></item>
+	</category>
+</language>

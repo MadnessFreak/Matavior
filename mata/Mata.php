@@ -16,6 +16,7 @@ define('MATA_VERSION', '0.1120.14');
 class Mata {
 	protected static $templateObj = null;
 	protected static $sessionObj = null;
+	protected static $langObj = null;
 
 	/* ************************************************ */
 
@@ -32,7 +33,7 @@ class Mata {
 		// init
 		self::initTemplateEngine();
 		self::initSession();
-		self::setUser(new User());
+		self::initLang();
 
 		// debug
 		Debug::add('SESSION', print_r($_SESSION, true));
@@ -107,6 +108,17 @@ class Mata {
 		// assign
 		Mata::getTPL()->assign('SESSION', $_SESSION);
 	}
+
+	/**
+	 * Initializes the language.
+	 */
+	protected static function initLang() {
+		// create
+		self::$langObj = Language::load(SYS_DIR.'/Lang/de.xml');
+		self::getTPL()->addFilter(new Twig_SimpleFilter('lang', function($key) {
+			return Mata::getLang()->get($key);
+		}));
+	}
 	
 	/**
 	 * Handles the request.
@@ -122,6 +134,10 @@ class Mata {
 
 	public static function getSession() {
 		return self::$sessionObj;
+	}
+
+	public static function getLang() {
+		return self::$langObj;
 	}
 
 	public static function getUser() {

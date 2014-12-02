@@ -109,7 +109,7 @@ class Request
 			return;
 
 		// validate query
-		if (!preg_match('~^[a-z0-9_]+$~i', $query)) {
+		if (!preg_match('~^[a-z0-9_-]+$~i', $query)) {
 			throw new SystemException("Illegal Query Detected ($query)");
 		}
 	}

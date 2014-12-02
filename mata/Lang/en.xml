@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://matavior.rewtek.net" languagecode="en" languagename="English">
+	<category name="mata.test">
+		<item name="mata.test.string"><![CDATA[String]]></item>
+	</category>
+
+	<category name="mata.date">
+		<item name="mata.date.dateFormat"><![CDATA[M jS Y]]></item>
+		<item name="mata.date.timeFormat"><![CDATA[g:ia]]></item>
+
+		<!-- variables for time periods -->
+		<item name="mata.date.period.older"><![CDATA[Older]]></item>
+		<item name="mata.date.period.today"><![CDATA[Today]]></item>
+		<item name="mata.date.period.yesterday"><![CDATA[Yesterday]]></item>
+
+		<!-- variables for localized date formats -->
+		<item name="mata.date.hour"><![CDATA[Hour]]></item>
+		<item name="mata.date.minute"><![CDATA[Minute]]></item>
+	</category>
+
+	<category name="mata.global">
+		<item name="mata.global.backtotop"><![CDATA[Back to top]]></item>
+		<item name="mata.global.button.add"><![CDATA[Add]]></item>
+		<item name="mata.global.button.back"><![CDATA[Back]]></item>
+		<item name="mata.global.button.cancel"><![CDATA[Cancel]]></item>
+		<item name="mata.global.button.close"><![CDATA[Close]]></item>
+		<item name="mata.global.button.delete"><![CDATA[Delete]]></item>
+		<item name="mata.global.button.login"><![CDATA[Login]]></item>
+		<item name="mata.global.button.submit"><![CDATA[Submit]]></item>
+		<item name="mata.global.button.reset"><![CDATA[Reset]]></item>
+		<item name="mata.global.credentials"><![CDATA[Credentials]]></item>
+		<item name="mata.global.error.notfound"><![CDATA[Not Found]]></item>
+		<item name="mata.global.error.notfound.desc"><![CDATA[Sorry, but the page you were trying to view does not exist.]]></item>
+		<item name="mata.global.error.notfound.kidding"><![CDATA[Why don’t you try a page that works? Are you trying to break our site or something?<br>I mean — what is the deal? Move along. There is nothing to see here.]]></item>
+		<item name="mata.global.error.illegalLink"><![CDATA[The link you are trying to reach is no longer available or invalid.]]></item>
+		<item name="mata.global.error.permissionDenied"><![CDATA[Access denied. You’re not authorized to view this page.]]></item>
+		<item name="mata.global.manageAccount"><![CDATA[Manage Account]]></item>
+		<item name="mata.global.login"><![CDATA[Login]]></item>
+		<item name="mata.global.login.success"><![CDATA[You have been successfully logged in.]]></item>
+		<item name="mata.global.login.remember"><![CDATA[Remember login]]></item>
+		<item name="mata.global.logout"><![CDATA[Logout]]></item>
+		<item name="mata.global.logout.success"><![CDATA[You have been successfully logged out.]]></item>
+		<item name="mata.global.redirection"><![CDATA[Please click <a href="/">here</a> if the automatic redirection does not work.]]></item>
+		<item name="mata.global.username"><![CDATA[Username]]></item>
+		<item name="mata.global.password"><![CDATA[Password]]></item>
+		<item name="mata.global.profile"><![CDATA[Profile]]></item>
+		<item name="mata.global.notifications"><![CDATA[Notifications]]></item>
+		<item name="mata.global.messages"><![CDATA[Messages]]></item>
+		<item name="mata.global.welcome"><![CDATA[Welcome]]></item>
+		<item name="mata.global.general"><![CDATA[General]]></item>
+		<item name="mata.global.security"><![CDATA[Security]]></item>
+		<item name="mata.global.birthday"><![CDATA[Birthday]]></item>
+		<item name="mata.global.gender"><![CDATA[Gender]]></item>
+		<item name="mata.global.gender.no"><![CDATA[No entry]]></item>
+		<item name="mata.global.gender.male"><![CDATA[Male]]></item>
+		<item name="mata.global.gender.female"><![CDATA[Female]]></item>
+		<item name="mata.global.footer"><![CDATA[<p>Made with love by <a href="http://github.com/MadnessFreak" target="_blank">MadnessFreak</a>.</p>
+				<p>Based on <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank">Google</a>.</p>]]></item>
+	</category>
+</language>
