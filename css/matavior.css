@@ -7,6 +7,7 @@ footer {
 	background-color: #f9f9f9;
 	border-top: 1px solid #e5e5e5;
 	padding: 40px 0;
+	margin-top: 40px;
 	color: #999;
 }
 
@@ -29,6 +30,24 @@ footer > div > div > div.col-lg-12.exception p {
 	padding-bottom: 5px; 
 }
 
+form fieldset {
+	margin-bottom: 10px;
+}
+form fieldset legend {
+	font-size: 15px;
+}
+
+.headline {
+	margin-top: 0;
+	overflow: hidden;
+}
+.headline h3 {
+	margin-top: 0;
+}
+.headline hr {
+	margin-top: 0px !important;
+}
+
 .breadcrumb {
 	background-color: #ecf0f1 !important;
 	margin-top: 20px;
@@ -42,9 +61,29 @@ footer > div > div > div.col-lg-12.exception p {
 	color: #428bca;
 }
 
+.pagination {
+	margin: 0 !important;
+}
+
 .container .center {
   padding: 40px 15px;
   text-align: center;
+}
+
+.col-pad-5 {
+	padding: 0px !important;
+	padding-right: 5px !important;
+}
+.col-pad-5:last-child {
+	padding: 0 !important;
+}
+
+.tab-content {
+	border: 1px solid #e3e3e3;
+	border-top: 0;
+	border-radius: 0 0 4px 4px;
+	padding: 19px;
+	min-height: 20px;
 }
 
 .nav > li > span {
