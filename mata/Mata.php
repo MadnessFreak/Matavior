@@ -4,7 +4,7 @@
 define('TIME_NOW', time());
 
 // define version
-define('MATA_VERSION', '0.1120.14');
+define('MATA_VERSION', '0.122.14');
 
 /**
 * Provides the application central class.
@@ -76,7 +76,7 @@ class Mata {
 	 */
 	protected static function preload() {
 		// include
-		require_once 'Config/Config.inc.php';
+		require_once 'Config/options.inc.php';
 		require_once 'Utility.php';
 		require_once 'Autoloader.php';
 
