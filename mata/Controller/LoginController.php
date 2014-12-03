@@ -7,6 +7,8 @@
  * @package   Matavior
  */
 class LoginController extends AbstractController {
+	protected $referer = '';
+
 	/**
 	 * @see	\Controller\IController::init()
 	 */
@@ -45,6 +47,12 @@ class LoginController extends AbstractController {
 			$error['type'] = 'success';
 			$error['message'] = Mata::getLang()->get('mata.global.login.success') . '<br>' . Mata::getLang()->get('mata.global.redirection');
 		}
+		if (isset($_POST['remember'])) {
+			setcookie('mata_remember', $_POST['remember'] == 'on' ? true : false, time()+60*60*24*90, '/');
+		}
+		if (isset($_POST['ref'])) {
+			$this->referer = $_POST['ref'];
+		}
 
 		$error['fields'] = $fields;
 
@@ -81,6 +89,6 @@ class LoginController extends AbstractController {
 		Mata::getSession()->register('username', Mata::getSession()->user->username);
 
 		// refresh
-		header("Refresh: 3; " . (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/index'));
+		header("Refresh: 3; " . (!empty($this->referer) ? $this->referer : '/dashboard'));
 	}
 }

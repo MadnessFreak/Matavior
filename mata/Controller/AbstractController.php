@@ -24,10 +24,17 @@ abstract class AbstractController implements IController {
 	 */
 	public function init() {
 		// call basic methods
+		$this->checkLanguage();
 		$this->addNavigation();
 
 		// call default methods
 		$this->show();
+	}
+
+	public function checkLanguage() {
+		if (array_key_exists('language', Request::getParams())) {
+			Mata::setLang(Request::getParams()['language']);
+		}
 	}
 
 	public function addNavigation() {
