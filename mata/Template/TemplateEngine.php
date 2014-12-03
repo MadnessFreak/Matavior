@@ -71,7 +71,7 @@ class TemplateEngine {
 	{
 		if ($this->rendered) return;
 		
-		echo $this->engine->render('index.tpl');
+		echo $this->engine->render('index.twig');
 
 		$this->rendered = true;
 	}
