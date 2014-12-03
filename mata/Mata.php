@@ -4,7 +4,7 @@
 define('TIME_NOW', time());
 
 // define version
-define('MATA_VERSION', '0.122.14');
+define('MATA_VERSION', '0.123.14');
 
 /**
 * Provides the application central class.
@@ -34,6 +34,18 @@ class Mata {
 		self::initTemplateEngine();
 		self::initSession();
 		self::initLang();
+
+		// assign
+		Mata::getTPL()->assign('SESSION', $_SESSION);
+		Mata::getTPL()->assign('cookie', $_COOKIE);
+
+		Mata::getTPL()->assign('notifications', array(
+			array('id' => 1, 'asd')
+			));
+
+		Mata::getTPL()->assign('messages', array(
+			array('id' => 1, 'asd')
+			));
 
 		// debug
 		Debug::add('SESSION', print_r($_SESSION, true));
@@ -102,20 +114,19 @@ class Mata {
 	 * Initializes the session.
 	 */
 	protected static function initSession() {
-		// create
 		self::$sessionObj = new Session();
-
-		// assign
-		Mata::getTPL()->assign('SESSION', $_SESSION);
 	}
 
 	/**
 	 * Initializes the language.
 	 */
 	protected static function initLang() {
-		// create
-		self::$langObj = Language::load(SYS_DIR.'/Lang/de.xml');
-		self::getTPL()->addFilter(new Twig_SimpleFilter('lang', function($key) {
+		// set lang
+		//ata::setLang(empty(Mata::getSession()->lang) ? 'en' : Mata::getSession()->lang);
+		Mata::setLang(empty($_COOKIE['lang']) ? 'en' : $_COOKIE['lang']);
+		
+		// add filter
+		Mata::getTPL()->addFilter(new Twig_SimpleFilter('lang', function($key) {
 			return Mata::getLang()->get($key);
 		}));
 	}
@@ -138,6 +149,20 @@ class Mata {
 
 	public static function getLang() {
 		return self::$langObj;
+	}
+
+	public static function setLang($language) {
+		// set lang
+		self::$langObj = Language::load(SYS_DIR.'/Lang/'.$language.'.xml');
+
+		// set cookie
+		setcookie('lang', $language, time()+60*60*24*90, '/');
+
+		// assign lang info
+		Mata::getTPL()->assign('language', array(
+			'code' => self::$langObj->getCode(),
+			'name' => self::$langObj->getName()
+		));
 	}
 
 	public static function getUser() {

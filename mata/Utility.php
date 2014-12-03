@@ -51,4 +51,8 @@ class Utility {
 	public static function getRandomID() {
 		return self::getHash(microtime() . uniqid(mt_rand(), true));
 	}
+
+	public static function endsWith($haystack, $needle) {
+		return substr($haystack, strlen($haystack) - strlen($needle), strlen($needle)) === $needle;
+	}
 }

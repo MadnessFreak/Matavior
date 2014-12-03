@@ -53,6 +53,24 @@ class Language {
 	}
 
 	/**
+	 * Returns the language code.
+	 * 
+	 * @return	string
+	 */
+	public function getCode() {
+		return $this->languageCode;
+	}
+
+	/**
+	 * Returns the language name.
+	 * 
+	 * @return	string
+	 */
+	public function getName() {
+		return $this->languageName;
+	}
+
+	/**
 	 * Returns the name of this language.
 	 * 
 	 * @return	string
@@ -78,5 +96,22 @@ class Language {
 		}
 
 		return $language;
+	}
+
+	/**
+	 * Returns a list of all languaes.
+	 * 
+	 * @return	array
+	 */
+	public static function getLanguageList() {
+		$file = 'LanguageList.cache';
+		$files = Cache::available($file) ? Cache::unserialize($file) : Cache::serialize($file, scandir(Utility::unidir(SYS_DIR . '/Lang')));
+		$languages = array();
+
+		for ($i = 0; $i < count($files); $i++) {
+			if (Utility::endsWith($files[$i], '.xml')) array_push($languages, $files[$i]);
+		}
+		
+		return $languages;
 	}
 }

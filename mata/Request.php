@@ -87,8 +87,8 @@ class Request
 		foreach (self::$uri as $part) {
 			self::validate($part);
 		}
-		foreach (self::$params as $param) {
-			self::validate($param);
+		foreach (self::$params as $key => $param) {
+			if ($key != 'ref') self::validate($param);
 		}
 
 		// assign variables
