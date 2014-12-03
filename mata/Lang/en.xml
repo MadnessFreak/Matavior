@@ -34,7 +34,6 @@
 		<item name="mata.global.error.notfound.kidding"><![CDATA[Why don’t you try a page that works? Are you trying to break our site or something?<br>I mean — what is the deal? Move along. There is nothing to see here.]]></item>
 		<item name="mata.global.error.illegalLink"><![CDATA[The link you are trying to reach is no longer available or invalid.]]></item>
 		<item name="mata.global.error.permissionDenied"><![CDATA[Access denied. You’re not authorized to view this page.]]></item>
-		<item name="mata.global.manageAccount"><![CDATA[Manage Account]]></item>
 		<item name="mata.global.login"><![CDATA[Login]]></item>
 		<item name="mata.global.login.success"><![CDATA[You have been successfully logged in.]]></item>
 		<item name="mata.global.login.remember"><![CDATA[Remember login]]></item>
@@ -50,11 +49,23 @@
 		<item name="mata.global.general"><![CDATA[General]]></item>
 		<item name="mata.global.security"><![CDATA[Security]]></item>
 		<item name="mata.global.birthday"><![CDATA[Birthday]]></item>
+		<item name="mata.global.settings"><![CDATA[Settings]]></item>
 		<item name="mata.global.gender"><![CDATA[Gender]]></item>
 		<item name="mata.global.gender.no"><![CDATA[No entry]]></item>
 		<item name="mata.global.gender.male"><![CDATA[Male]]></item>
 		<item name="mata.global.gender.female"><![CDATA[Female]]></item>
 		<item name="mata.global.footer"><![CDATA[<p>Made with love by <a href="http://github.com/MadnessFreak" target="_blank">MadnessFreak</a>.</p>
-				<p>Based on <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank">Google</a>.</p>]]></item>
+				<p>Based on <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons from <a href="http://glyphicons.com" target="_blank">Glyphicons</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank">Google</a>.</p>]]></item>
+	</category>
+
+	<category name="mata.user">
+		<item name="mata.user.management"><![CDATA[Account Management]]></item>
+	</category>
+
+	<category name="mata.user.notification">
+		<item name="mata.user.notification"><![CDATA[Notifications]]></item>
+		<item name="mata.user.notification.no"><![CDATA[You have no notifications.]]></item>
+		<item name="mata.user.notification.noMore"><![CDATA[No further notifications.]]></item>
+		<item name="mata.user.notification.markAllAsRead"><![CDATA[Mark all as read]]></item>
 	</category>
 </language>

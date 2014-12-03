@@ -34,7 +34,6 @@
 		<item name="mata.global.error.notfound.kidding"><![CDATA[Warum versuchen Sie keine Seite die geht? Versuchen Sie unsere Webseite zu manipulieren oder was?<br>Ich meine - was ist das Problem? Bewegung. Hier gibt es nichts zu sehen.]]></item>
 		<item name="mata.global.error.illegalLink"><![CDATA[Der Link, den Sie versuchen aufzurufen, ist nicht mehr verfügbar oder ungültig.]]></item>
 		<item name="mata.global.error.permissionDenied"><![CDATA[Zugriff verwehrt. Sie sind nicht berechtigt, diese Seite aufzurufen.]]></item>
-		<item name="mata.global.manageAccount"><![CDATA[Konto verwalten]]></item>
 		<item name="mata.global.login"><![CDATA[Anmeldung]]></item>
 		<item name="mata.global.login.success"><![CDATA[Du wurdest erfolgreich angemeldet.]]></item>
 		<item name="mata.global.login.remember"><![CDATA[Anmeldung speichern]]></item>
@@ -49,12 +48,32 @@
 		<item name="mata.global.welcome"><![CDATA[Willkommen]]></item>
 		<item name="mata.global.general"><![CDATA[Allgemein]]></item>
 		<item name="mata.global.security"><![CDATA[Sicherheit]]></item>
+		<item name="mata.global.settings"><![CDATA[Einstellungen]]></item>
 		<item name="mata.global.birthday"><![CDATA[Geburtstag]]></item>
 		<item name="mata.global.gender"><![CDATA[Geschlecht]]></item>
 		<item name="mata.global.gender.no"><![CDATA[Keine Angabe]]></item>
 		<item name="mata.global.gender.male"><![CDATA[Männlich]]></item>
 		<item name="mata.global.gender.female"><![CDATA[Weiblich]]></item>
 		<item name="mata.global.footer"><![CDATA[<p>Mit Liebe erstellt von <a href="http://github.com/MadnessFreak" target="_blank">MadnessFreak</a>.</p>
-				<p>Basierend auf <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons von <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a>. Schriftarten von <a href="http://www.google.com/webfonts" target="_blank">Google</a>.</p>]]></item>
+				<p>Basierend auf <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons von <a href="http://glyphicons.com" target="_blank">Glyphicons</a>. Schriftarten von <a href="http://www.google.com/webfonts" target="_blank">Google</a>.</p>]]></item>
+	</category>
+
+	<category name="mata.user">
+		<item name="mata.user.management"><![CDATA[Benutzerverwaltung]]></item>
+	</category>
+
+	<category name="mata.user.messages">
+		<item name="mata.user.message"><![CDATA[Nachricht]]></item>
+		<item name="mata.user.messages"><![CDATA[Nachrichten]]></item>
+		<item name="mata.user.messages.no"><![CDATA[Sie haben keine Nachrichten.]]></item>
+		<item name="mata.user.messages.noNew"><![CDATA[Sie haben keine neuen Nachrichten.]]></item>
+		<item name="mata.user.messages.noMore"><![CDATA[Sie haben keine weiteren Nachrichten.]]></item>
+	</category>
+
+	<category name="mata.user.notification">
+		<item name="mata.user.notification"><![CDATA[Benachrichtigungen]]></item>
+		<item name="mata.user.notification.no"><![CDATA[Sie haben keine Benachrichtigungen.]]></item>
+		<item name="mata.user.notification.noMore"><![CDATA[Keine weiteren Benachrichtigungen.]]></item>
+		<item name="mata.user.notification.markAllAsRead"><![CDATA[Alle als gelesen markieren]]></item>
 	</category>
 </language>
