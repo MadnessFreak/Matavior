@@ -1,20 +1,20 @@
-<header class="headline">
-	<h3>Account</h3>
-	<hr>
-</header>
+{% include 'pageHeader.twig' with { 'pageTitle' : 'mata.user.management'|lang } %}
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-lg-3">
+		{% include 'include/dashboard.sidebar.twig' with { 'sidebar' : 'account' } %}
+	</div>
+	<div class="col-lg-9">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#general" data-toggle="tab">{{ 'mata.global.general'|lang }}</a></li>
 			<li><a href="#security" data-toggle="tab">{{ 'mata.global.security'|lang }}</a></li>
 		</ul>
 		<form class="form-horizontal tab-content" role="form" method="post">
 			<div class="tab-pane fade in active" id="general">
-				{% include 'include/account.general.tpl' %}
+				{% include 'include/account.general.twig' %}
 			</div>
 			<div class="tab-pane fade" id="security">
-				{% include 'include/account.security.tpl' %}
+				{% include 'include/account.security.twig' %}
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
@@ -23,5 +23,5 @@
 				</div>
 			</div>
 		</form>
-	</div> <!-- col -->
-</div> <!-- row -->
+	</div>
+</div>

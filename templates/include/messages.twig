@@ -1,0 +1,100 @@
+{% include 'pageHeader.twig' with { 'pageTitle' : 'mata.global.messages'|lang } %}
+
+<div class="row">
+	<div class="col-lg-3">
+		{% include 'include/dashboard.sidebar.twig' with { 'sidebar' : 'messages' } %}
+	</div>
+	<div class="col-lg-9">
+		{% if messages == false %}
+		<div class="alert alert-info" role="alert">
+			<p>{{ 'mata.user.messages.no'|lang }}</p>
+		</div>
+		{% else %}
+		<div class="messages">
+			<header class="head">
+				<h4 class="left">{{ 'mata.date.period.today'|lang }}</h4>
+				<a href="/" class="btn btn-default btn-sm right offset" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ 'mata.user.notification.markAllAsRead'|lang }}</a>
+				<a href="/" class="btn btn-default btn-sm right offset" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Nachricht löschen</a>
+				<a href="/" class="btn btn-default btn-sm right offset" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nachricht erstellen</a>
+			</header>
+			<div class="entry bg-info">
+				<div class="media">
+					<div class="media-left media-middle"><input type="checkbox" data-object-id="123"></div>
+					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+					<div class="media-body media-middle">
+						<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a> <span class="label label-primary">Neu</span></h5>
+						<small>Von <a href="/members/profile/MadnessFreak">MadnessFreak</a> vor <time timestamp="1414972800">15 minutes</time></small>
+					</div>
+				</div>
+			</div>
+			<div class="entry">
+				<div class="media">
+					<div class="media-left media-middle"><input type="checkbox" data-object-id="123"></div>
+					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+					<div class="media-body media-middle">
+						<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a></h5>
+						<small>Von <a href="/members/profile/MadnessFreak">MadnessFreak</a> vor <time timestamp="1414972800">15 minutes</time></small>
+					</div>
+				</div>
+			</div>
+			<div class="entry">
+				<div class="media">
+					<div class="media-left media-middle"><input type="checkbox" data-object-id="123"></div>
+					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+					<div class="media-body media-middle">
+						<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a></h5>
+						<small>Von <a href="/members/profile/MadnessFreak">MadnessFreak</a> vor <time timestamp="1414972800">15 minutes</time></small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="messages">
+			<header class="head">
+				<h4>{{ 'mata.date.period.yesterday'|lang }}</h4>
+			</header>
+			<div class="entry">
+				<div class="media">
+					<div class="media-left media-middle"><input type="checkbox" data-object-id="123"></div>
+					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+					<div class="media-body media-middle">
+						<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a></h5>
+						<small>Von <a href="/members/profile/MadnessFreak">MadnessFreak</a> <time timestamp="1414972800">Gestern</time></small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="messages">
+			<header class="head">
+				<h4>{{ 'mata.date.period.older'|lang }}</h4>
+			</header>
+			<div class="alert alert-default" role="alert">
+				<p>{{ 'mata.user.messages.noMore'|lang }}</p>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</div>
+
+<style type="text/css">
+.messages > div.entry { 
+	width: 100%;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 10px;
+	overflow: hidden;
+	background-color: #fff;
+}
+.messages > div.entry:nth-child(even) { 
+	background-color: #f9f9f9;
+}
+.messages > div.entry:hover { background-color: #ecf0f1 !important; }
+.messages > div.entry:first-of-type { border-top-left-radius: 4px; border-top-right-radius: 4px; }
+.messages > div.entry:last-of-type { border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom: 1px solid #ddd; }
+.messages > div.entry > div { padding: 5px; }
+.messages > div.entry > hr { margin: 2px; }
+.messages > div.entry img { width: 40px; height: 40px; }
+.messages > div.head { display: block; }
+
+.messages .media-heading { margin: 0; }
+</style>

@@ -2,7 +2,7 @@
 	<h3>Members <span class="badge">{{ membersCount }}</span></h3>
 </header>
 
-{% include 'pagination.tpl' %}
+{% include 'pagination.twig' %}
 
 <div class="members">
 	{% for member in members|slice(membersStart,membersEnd) %}
@@ -13,7 +13,7 @@
 	{% endfor %}
 </div>
 
-{% include 'pagination.tpl' %}
+{% include 'pagination.twig' %}
 
 <style type="text/css">
 .members { margin: 10px 0 10px 0; }

@@ -1,7 +1,7 @@
 {% if REQUEST_ACTION == empty or REQUEST_ACTION == 'page' %}
-	{% include 'include/members.list.tpl' %}
+	{% include 'include/members.list.twig' %}
 {% elseif REQUEST_ACTION == 'profile' %}
-	{% include 'include/members.profile.tpl' %}
+	{% include 'include/members.profile.twig' %}
 {% else %}
-	{% include 'illegalLink.tpl' %}
+	{% include 'illegalLink.twig' %}
 {% endif %}

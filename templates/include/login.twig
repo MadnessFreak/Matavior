@@ -2,7 +2,7 @@
 	<h3>{{ 'mata.global.login'|lang }}</h3><hr>
 </header>
 
-{% include 'alert.tpl' %}
+{% include 'alert.twig' %}
 
 {% if action.error.type != 'success' %}
 <div class="row">
@@ -25,13 +25,14 @@
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-10">
 						<div class="checkbox">
-							<label><input type="checkbox" name="remember"> {{ 'mata.global.login.remember'|lang }}</label>
+							<label><input type="checkbox" name="remember"{{ cookie.mata_remember == true ? ' checked' : '' }}> {{ 'mata.global.login.remember'|lang }}</label>
 						</div>
 					</div>
 				</div>
 			</fieldset>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-10">
+					<input type="hidden" name="ref" value="{{ REQUEST_PARAMS.ref|replace({'%2F': '/'}) }}">
 					<button type="submit" class="btn btn-default">{{ 'mata.global.button.login'|lang }}</button>
 				</div>
 			</div>

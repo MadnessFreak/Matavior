@@ -1,0 +1,94 @@
+{% include 'pageHeader.twig' with { 'pageTitle' : 'mata.global.notifications'|lang } %}
+
+<div class="row">
+	<div class="col-lg-3">
+		{% include 'include/dashboard.sidebar.twig' with { 'sidebar' : 'notifications' } %}
+	</div>
+	<div class="col-lg-9">
+		{% if notifications == false %}
+		<div class="alert alert-info" role="alert">
+			<p>{{ 'mata.user.notification.no'|lang }}</p>
+		</div>
+		{% else %}
+		<div class="notifications">
+			<header class="head">
+				<h4 class="left">{{ 'mata.date.period.today'|lang }}</h4>
+				<a href="/" class="btn btn-default btn-sm right" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ 'mata.user.notification.markAllAsRead'|lang }}</a>
+			</header>
+			<div class="entry">
+				<div class="media">
+					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+					<div class="media-body media-middle">
+						<h5 class="media-heading"><a href="/members/profile/MadnessFreak">MadnessFreak</a> wrote on <a href="/blog/entry/123-Lorem-ipsum-dolor-sit">your wall</a>.</h5>
+						<small><time timestamp="1414972800">15 minutes</time> ago</small>
+					</div>
+				</div>
+			</div>
+			<div class="entry">
+				<div class="media">
+					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+					<div class="media-body media-middle">
+						<h5 class="media-heading"><a href="/members/profile/MadnessFreak">MadnessFreak</a> sent you a <a href="/messages/view/123-Lorem-ipsum-dolor-sit">message</a>.</h5>
+						<small><time timestamp="1414972800">15 minutes</time> ago</small>
+					</div>
+				</div>
+			</div>
+			<div class="entry">
+				<div class="media">
+					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+					<div class="media-body media-middle">
+						<h5 class="media-heading"><a href="/members/profile/MadnessFreak">MadnessFreak</a> replied to the thread <a href="/community/thread/123-Lorem-ipsum">Lorem ipsum</a>.</h5>
+						<small><time timestamp="1414972800">15 minutes</time> ago</small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="notifications">
+			<header class="head">
+				<h4>{{ 'mata.date.period.yesterday'|lang }}</h4>
+			</header>
+			<div class="entry">
+				<div class="media">
+					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+					<div class="media-body media-middle">
+						<h5 class="media-heading"><a href="/members/profile/MadnessFreak">MadnessFreak</a> sent you a <a href="/messages/view/123-Lorem-ipsum-dolor-sit">message</a>.</h5>
+						<small><time timestamp="1414972800">Yesterday, 15:30</time></small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="notifications">
+			<header class="head">
+				<h4>{{ 'mata.date.period.older'|lang }}</h4>
+			</header>
+			<div class="alert alert-default" role="alert">
+				<p>{{ 'mata.user.notification.noMore'|lang }}</p>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</div>
+
+<style type="text/css">
+.notifications > div.entry { 
+	width: 100%;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 10px;
+	overflow: hidden;
+	background-color: #fff;
+}
+.notifications > div.entry:nth-child(even) { 
+	background-color: #f9f9f9;
+}
+.notifications > div.entry:hover { background-color: #ecf0f1; }
+.notifications > div.entry:first-of-type { border-top-left-radius: 4px; border-top-right-radius: 4px; }
+.notifications > div.entry:last-of-type { border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom: 1px solid #ddd; }
+.notifications > div.entry > div { padding: 5px; }
+.notifications > div.entry > hr { margin: 2px; }
+.notifications > div.entry img { width: 40px; height: 40px; }
+.notifications > div.head { display: block; }
+
+.notifications .media-heading { margin: 0; }
+</style>
