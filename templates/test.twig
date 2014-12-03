@@ -1,0 +1,9 @@
+{% if weather.status == 'sunny' %}
+<div class="alert alert-dismissable alert-success">
+	{{ 'mata.global.happy'|lang }}
+</div>
+{% else %}
+<div class="alert alert-dismissable alert-success">
+	{{ 'mata.global.sad'|lang }}
+</div>
+{% endif %}
