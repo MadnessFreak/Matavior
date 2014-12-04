@@ -65,7 +65,7 @@ class Mata {
 			array('id' => 1, 'asd')
 			));
 
-		if (!empty(Mata::getUser())) {
+		if (Mata::getUser() !== null) {
 			Mata::getTPL()->assign('user', Mata::getUser()->getUserData());
 		}
 
@@ -207,7 +207,7 @@ class Mata {
 	}
 
 	public static function getUser() {
-		return self::$sessionObj->user;
+		return isset(self::$sessionObj->user) ?  self::$sessionObj->user : null;
 	}
 
 	public static function setUser($user) {

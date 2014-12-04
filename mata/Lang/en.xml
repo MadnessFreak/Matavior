@@ -8,6 +8,9 @@
 		<item name="mata.date.dateFormat"><![CDATA[M jS Y]]></item>
 		<item name="mata.date.timeFormat"><![CDATA[g:ia]]></item>
 
+		<item name="mata.date.shortDateFormat"><![CDATA[m/d/Y]]></item>
+		<item name="mata.date.shortTimeFormat"><![CDATA[g:ia]]></item>
+
 		<!-- variables for time periods -->
 		<item name="mata.date.period.older"><![CDATA[Older]]></item>
 		<item name="mata.date.period.today"><![CDATA[Today]]></item>
@@ -56,6 +59,15 @@
 		<item name="mata.global.gender.female"><![CDATA[Female]]></item>
 		<item name="mata.global.footer"><![CDATA[<p>Made with love by <a href="http://github.com/MadnessFreak" target="_blank">MadnessFreak</a>.</p>
 				<p>Based on <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons from <a href="http://glyphicons.com" target="_blank">Glyphicons</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank">Google</a>.</p>]]></item>
+	</category>
+
+	<category name="mata.navigation">
+		<item name="mata.navigation.dashboard"><![CDATA[Dashboard]]></item>
+		<item name="mata.navigation.members"><![CDATA[Members]]></item>
+		<item name="mata.navigation.team"><![CDATA[Team]]></item>
+		<item name="mata.navigation.blog"><![CDATA[Blog]]></item>
+		<item name="mata.navigation.community"><![CDATA[Community]]></item>
+		<item name="mata.navigation.search"><![CDATA[Search]]></item>
 	</category>
 
 	<category name="mata.user">
