@@ -30,26 +30,24 @@ class User {
 	/**
 	 * Creates a new instance of the class.
 	 */
-	public function __construct() {
-		$this->data = array();
+	public function __construct($id, $row = null) {
+		if ($id !== null) {
+			$sql = "SELECT		user_table.*
+					FROM		".DB_PREFIX."_users user_table
+					WHERE		user_table.userID = ?";
+			$statement = WCF::getDB()->prepareStatement($sql);
+			$statement->execute(array($id));
+			$row = $statement->fetchArray();
+			
+			// enforce data type 'array'
+			if ($row === false) $row = array();
+		}
+		else if ($row !== null) {
+			$this->data = $row;
+		}
 	}
 
 	/* ************************************************ */
-
-	public static function create() {
-		$user = new User();
-		$user->addData();
-		return $user;
-	}
-
-	public function addData() {
-		$this->data = array();
-		$this->data['userID'] = 1;
-		$this->data['username'] = 'MadnessFreak'; // for test purposes
-		$this->data['email'] = 'madnessfreak@happyduckz.co';
-		$this->data['birthday'] = 817603200;
-		$this->data['gender'] = 1;
-	}
 
 	/**
 	 * Returns the userID.
@@ -57,7 +55,7 @@ class User {
 	 * @return	int
 	 */
 	public function getUserID() {
-		return !empty($this->userID) ?  $this->userID : 0;
+		return isset($this->userID) ?  $this->userID : false;
 	}
 
 	/**
@@ -86,4 +84,24 @@ class User {
 	/*public function __toString() {
 		return $this->getUsername();
 	}*/
+
+	/* ************************************************ */
+
+	/**
+	 * Returns the user with the given username.
+	 * 
+	 * @param	string		$username
+	 * @return	\wcf\data\user\User
+	 */
+	public static function getUserByUsername($username) {
+		$sql = "SELECT		user_table.*
+				FROM		".DB_PREFIX."_users user_table
+				WHERE		user_table.username = ?";
+		$statement = Mata::getDB()->prepareStatement($sql);
+		$statement->execute(array($username));
+		$row = $statement->fetchArray();
+		if (!$row) $row = array();
+		
+		return new User(null, $row);
+	}
 }

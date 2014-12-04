@@ -4,7 +4,7 @@
 define('TIME_NOW', time());
 
 // define version
-define('MATA_VERSION', '0.123.14');
+define('MATA_VERSION', '0.124.14');
 
 /**
 * Provides the application central class.
@@ -14,9 +14,26 @@ define('MATA_VERSION', '0.123.14');
 * @package    Matavior
 */
 class Mata {
+	/**
+	 * template object
+	 * @var	\Template\TemplateWrapper
+	 */
 	protected static $templateObj = null;
+	/**
+	 * session object
+	 * @var	\Session
+	 */
 	protected static $sessionObj = null;
+	/**
+	 * language object
+	 * @var	\Language
+	 */
 	protected static $langObj = null;
+	/**
+	 * database object
+	 * @var	\Database\Database
+	 */
+	protected static $dbObj = null;
 
 	/* ************************************************ */
 
@@ -34,6 +51,7 @@ class Mata {
 		self::initTemplateEngine();
 		self::initSession();
 		self::initLang();
+		self::initDatabase();
 
 		// assign
 		Mata::getTPL()->assign('SESSION', $_SESSION);
@@ -46,6 +64,10 @@ class Mata {
 		Mata::getTPL()->assign('messages', array(
 			array('id' => 1, 'asd')
 			));
+
+		if (!empty(Mata::getUser())) {
+			Mata::getTPL()->assign('user', Mata::getUser()->getUserData());
+		}
 
 		// debug
 		Debug::add('SESSION', print_r($_SESSION, true));
@@ -130,6 +152,21 @@ class Mata {
 			return Mata::getLang()->get($key);
 		}));
 	}
+
+	/**
+	 * Initializes the database.
+	 */
+	private static function initDatabase() {
+		// get configuration
+		$dbHost = $dbUser = $dbPassword = $dbName = '';
+		$dbPort = 0;
+
+		// include configuration
+		require_once Utility::unidir(SYS_DIR.'Config/database.inc.php');
+
+		// create database connection
+		self::$dbObj = new Database($dbHost, $dbUser, $dbPassword, $dbName, $dbPort);
+	}
 	
 	/**
 	 * Handles the request.
@@ -163,6 +200,10 @@ class Mata {
 			'code' => self::$langObj->getCode(),
 			'name' => self::$langObj->getName()
 		));
+	}
+
+	public static function getDB() {
+		return self::$dbObj;
 	}
 
 	public static function getUser() {

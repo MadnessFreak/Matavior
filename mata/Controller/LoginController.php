@@ -8,6 +8,7 @@
  */
 class LoginController extends AbstractController {
 	protected $referer = '';
+	protected $user = null;
 
 	/**
 	 * @see	\Controller\IController::init()
@@ -35,18 +36,29 @@ class LoginController extends AbstractController {
 			'message' => 'Please correct the erroneous fields marked below.'
 			);
 
-		if (!isset($_POST['username']) || $_POST['username'] != 'MadnessFreak') {
-			array_push($fields, 'username');
-			$error['message'] = 'The entered username does not exist.';
-		}
-		if (!isset($_POST['password']) || $_POST['password'] != 'test123') {
+		if (empty($_POST['password'])) {
 			array_push($fields, 'password');
-			$error['message'] = 'The entered password is wrong.';
 		}
-		if ($_POST['username'] == 'MadnessFreak' && $_POST['password'] == 'test123') {
-			$error['type'] = 'success';
-			$error['message'] = Mata::getLang()->get('mata.global.login.success') . '<br>' . Mata::getLang()->get('mata.global.redirection');
+
+		if (empty($_POST['username'])) {
+			array_push($fields, 'username');
+		} else {
+			$this->user = User::getUserByUsername($_POST['username']);
+
+			if ($this->user->username == false) {
+				array_push($fields, 'username');
+				$error['message'] = 'The entered username does not exist.';
+			} else {
+				if (md5($_POST['password']) == $this->user->password) {
+					$error['type'] = 'success';
+					$error['message'] = Mata::getLang()->get('mata.global.login.success') . '<br>' . Mata::getLang()->get('mata.global.redirection');
+				} else {
+					array_push($fields, 'password');
+					$error['message'] = 'The entered password is wrong.';
+				}
+			}
 		}
+
 		if (isset($_POST['remember'])) {
 			setcookie('mata_remember', $_POST['remember'] == 'on' ? true : false, time()+60*60*24*90, '/');
 		}
@@ -83,7 +95,7 @@ class LoginController extends AbstractController {
 	 */
 	public function execute() {
 		// login
-		Mata::setUser(User::create());
+		Mata::setUser($this->user);
 		Mata::getSession()->register('loggedIn', true);
 		Mata::getSession()->register('userID', Mata::getSession()->user->userID);
 		Mata::getSession()->register('username', Mata::getSession()->user->username);

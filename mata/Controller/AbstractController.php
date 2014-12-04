@@ -38,15 +38,31 @@ abstract class AbstractController implements IController {
 	}
 
 	public function addNavigation() {
-		$navigation = array(
-			array('navID' => 1, 'navName' => 'Dashboard', 'navLink' => 'dashboard'),
-			array('navID' => 2, 'navName' => 'Members', 'navLink' => 'members'),
-			array('navID' => 3, 'navName' => 'Team', 'navLink' => 'members/team'),
-			array('navID' => 4, 'navName' => 'Blog', 'navLink' => 'blog'),
-			array('navID' => 5, 'navName' => 'Community', 'navLink' => 'community'),
-			array('navID' => 6, 'navName' => 'Search', 'navLink' => 'search')
-			);
+		$file = 'Navigation.cache';
+		$navigation = array();
 
+		// check for cache
+		if (Cache::available($file)) {
+			$navigation = Cache::unserialize($file);
+		} else {
+			// prepare
+			$sql = "SELECT		*
+					FROM		".DB_PREFIX."_navigation
+					ORDER BY	showOrder ASC";
+			$statement = Mata::getDB()->prepareStatement($sql);
+			$statement->execute();
+			$navigation = array();
+			
+			// fetch
+			while ($row = $statement->fetchArray()) {
+				array_push($navigation, $row);
+			}
+
+			// cache
+			Cache::serialize($file, $navigation);
+		}
+
+		// assign
 		Mata::getTPL()->assign('navigation', $navigation);
 	}
 
