@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50611
 File Encoding         : 65001
 
-Date: 2014-12-04 16:22:43
+Date: 2014-12-05 14:20:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,13 +25,19 @@ CREATE TABLE `mata_groups` (
   `groupDesc` text,
   `groupType` tinyint(1) NOT NULL DEFAULT '4',
   `priority` mediumint(8) NOT NULL DEFAULT '0',
+  `userOnlineMarking` varchar(255) NOT NULL DEFAULT '%s',
   `showOnTeamPage` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`groupID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of mata_groups
 -- ----------------------------
+INSERT INTO `mata_groups` VALUES ('1', 'Everyone', null, '1', '0', '%s', '0');
+INSERT INTO `mata_groups` VALUES ('2', 'Guests', null, '2', '0', '%s', '0');
+INSERT INTO `mata_groups` VALUES ('3', 'Registered Users', null, '3', '10', '%s', '0');
+INSERT INTO `mata_groups` VALUES ('4', 'Administrators', null, '4', '1000', '<strong style=\"color:#FE2E2E;\">%s</strong>', '1');
+INSERT INTO `mata_groups` VALUES ('5', 'Moderators', null, '4', '100', '<strong style=\"color:#009933;\">%s</strong>', '1');
 
 -- ----------------------------
 -- Table structure for `mata_navigation`
@@ -78,6 +84,7 @@ CREATE TABLE `mata_session` (
 -- ----------------------------
 -- Records of mata_session
 -- ----------------------------
+INSERT INTO `mata_session` VALUES ('sdsdfg', '1', '127.0.0.1', 'CHROME', '0', '', '', null);
 
 -- ----------------------------
 -- Table structure for `mata_users`
@@ -100,13 +107,31 @@ CREATE TABLE `mata_users` (
   `registrationDate` int(10) NOT NULL DEFAULT '0',
   `registrationIpAddress` varchar(39) NOT NULL DEFAULT '',
   `lastActivityTime` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`userID`),
+  UNIQUE KEY `username` (`username`) USING HASH
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of mata_users
 -- ----------------------------
-INSERT INTO `mata_users` VALUES ('1', 'MadnessFreak', 'madnessfreak@happyduck.co', 'cc03e747a6afbbcbf8be7668acfebee5', 'asd', '0', null, '0', '817603200', '0', '3', '0', '0', '1417702174', '', '0');
+INSERT INTO `mata_users` VALUES ('1', 'MadnessFreak', 'madnessfreak@happyduck.co', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '817603200', '0', '4', '0', '0', '1417702174', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('2', 'Aalabyss', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417778249', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('3', 'Abra', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417778968', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('4', 'Bisaflor', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780451', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('5', 'Charmian', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780618', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('6', 'Elezard', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780680', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('7', 'Rihorn', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780718', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('8', 'Seemon', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780769', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('9', 'Arktos', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780799', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('10', 'Tyracroc', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780826', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('11', 'Fluffeluff', 'max.mustermann@example.net', 'd41d8cd98f00b204e9800998ecf8427e', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780847', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('12', 'Quaxo', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780866', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('13', 'Griffel', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417780876', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('15', 'Sonnkern', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417781154', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('16', 'Stahlos', 'max.mustermann@example.net', 'b154c69a5ff4adad34eb390101bfc48b', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417781195', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('18', 'Snubbull', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417781241', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('19', 'Scherox', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417781275', '127.0.0.1', '0');
+INSERT INTO `mata_users` VALUES ('20', 'Octillery', 'max.mustermann@example.net', 'cc03e747a6afbbcbf8be7668acfebee5', '1c99c5a7d118311c49b120be2118e44a', '0', null, '0', '0', '0', '3', '0', '0', '1417781296', '127.0.0.1', '0');
 
 -- ----------------------------
 -- Table structure for `mata_user_to_group`
@@ -117,6 +142,7 @@ CREATE TABLE `mata_user_to_group` (
   `groupID` int(10) unsigned NOT NULL,
   UNIQUE KEY `userID` (`userID`,`groupID`),
   KEY `groupID` (`groupID`),
+  KEY `userID_2` (`userID`),
   CONSTRAINT `sug_user_to_group_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `mata_users` (`userID`) ON DELETE CASCADE,
   CONSTRAINT `sug_user_to_group_ibfk_2` FOREIGN KEY (`groupID`) REFERENCES `mata_groups` (`groupID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -124,3 +150,24 @@ CREATE TABLE `mata_user_to_group` (
 -- ----------------------------
 -- Records of mata_user_to_group
 -- ----------------------------
+INSERT INTO `mata_user_to_group` VALUES ('1', '3');
+INSERT INTO `mata_user_to_group` VALUES ('2', '3');
+INSERT INTO `mata_user_to_group` VALUES ('3', '3');
+INSERT INTO `mata_user_to_group` VALUES ('4', '3');
+INSERT INTO `mata_user_to_group` VALUES ('5', '3');
+INSERT INTO `mata_user_to_group` VALUES ('6', '3');
+INSERT INTO `mata_user_to_group` VALUES ('7', '3');
+INSERT INTO `mata_user_to_group` VALUES ('8', '3');
+INSERT INTO `mata_user_to_group` VALUES ('9', '3');
+INSERT INTO `mata_user_to_group` VALUES ('10', '3');
+INSERT INTO `mata_user_to_group` VALUES ('11', '3');
+INSERT INTO `mata_user_to_group` VALUES ('12', '3');
+INSERT INTO `mata_user_to_group` VALUES ('13', '3');
+INSERT INTO `mata_user_to_group` VALUES ('15', '3');
+INSERT INTO `mata_user_to_group` VALUES ('16', '3');
+INSERT INTO `mata_user_to_group` VALUES ('18', '3');
+INSERT INTO `mata_user_to_group` VALUES ('19', '3');
+INSERT INTO `mata_user_to_group` VALUES ('20', '3');
+INSERT INTO `mata_user_to_group` VALUES ('1', '4');
+INSERT INTO `mata_user_to_group` VALUES ('3', '5');
+INSERT INTO `mata_user_to_group` VALUES ('5', '5');
