@@ -4,7 +4,7 @@
 define('TIME_NOW', time());
 
 // define version
-define('MATA_VERSION', '0.124.14');
+define('MATA_VERSION', '0.125.14');
 
 /**
 * Provides the application central class.
@@ -207,7 +207,7 @@ class Mata {
 	}
 
 	public static function getUser() {
-		return isset(self::$sessionObj->user) ?  self::$sessionObj->user : null;
+		return self::$sessionObj->user == false ? null : self::$sessionObj->user;
 	}
 
 	public static function setUser($user) {
