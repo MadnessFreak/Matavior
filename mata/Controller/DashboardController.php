@@ -13,12 +13,11 @@ class DashboardController extends AbstractController {
 	public function init() {
 		// yo
 		$this->loginRequired = true;
-
+		
 		if (Mata::getSession()->loggedIn) {
 			// add account data
 			Mata::getTPL()->assign('account', Mata::getUser()->getUserData());
 		}
-
 		// show
 		parent::init();
 	}
