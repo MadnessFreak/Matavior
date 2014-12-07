@@ -8,7 +8,7 @@
 	{% for member in members|slice(membersStart,membersEnd) %}
 	<div>
 		<div><img src="/images/avatar/default.png"></div>
-		<div><h5><a href="/members/profile/{{ member.username }}">{{ member.username }}</a>&nbsp;<span class="label label-success">Online</span><br><small>{{ member.groupName }}</small></h5></div>
+		<div><h5><a href="/members/profile/{{ member.username }}">{{ member.username }}</a>&nbsp;{{ member.session ? '<span class="label label-success">Online</span>' : '<span class="label label-default">Offline</span>' }}<br><small>{{ member.userOnlineMarking|format(member.groupName)|raw }}</small></h5></div>
 	</div>
 	{% endfor %}
 </div>

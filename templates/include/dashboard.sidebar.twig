@@ -1,10 +1,13 @@
 <div class="media well">
-	<a class="media-left framed" href="/members/profile/{{ SESSION.username }}"><img src="/images/avatar/default-big.png" alt="User Avatar" style="width:80px; height:80px;"></a>
+	<a class="media-left framed" href="/members/profile/{{ user.username }}"><img src="/images/avatar/default-big.png" alt="User Avatar" style="width:80px; height:80px;"></a>
 	<div class="media-body">
 		<h5 class="media-heading">
-			<a href="/members/profile/{{ SESSION.username }}">{{ SESSION.username }}</a><br>
+			<a href="/members/profile/{{ user.username }}">{{ user.username }}</a><br>
 			<small>Administrator</small>
+
 		</h5>
+
+		<small>Regstiert seit {{ user.registrationDate|date('mata.date.shortDateFormat'|lang) }}</small>
 	</div>
 	<!--<hr>
 	<div class="media-body">
@@ -14,7 +17,7 @@
 </div>
 
 <div class="list-group">
-	<a href="/members/profile/{{ SESSION.username }}" class="list-group-item{{ sidebar == 'profile' ? ' active' : '' }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ 'mata.global.profile'|lang }}</a>
+	<a href="/members/profile/{{ user.username }}" class="list-group-item{{ sidebar == 'profile' ? ' active' : '' }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ 'mata.global.profile'|lang }}</a>
 	<a href="/account" class="list-group-item{{ sidebar == 'account' ? ' active' : '' }}"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> {{ 'mata.user.management'|lang }}</a>
 	<a href="/notifications" class="list-group-item{{ sidebar == 'notifications' ? ' active' : '' }}"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> {{ 'mata.global.notifications'|lang }} <span class="badge">0</span></a>
 	<a href="/messages" class="list-group-item{{ sidebar == 'messages' ? ' active' : '' }}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ 'mata.global.messages'|lang }} <span class="badge">2</span></a>

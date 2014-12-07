@@ -1,0 +1,76 @@
+{% include 'pageHeader.twig' with { 'pageTitle' : 'Add Member' } %}
+
+{% if errorMessage %}
+<div class="alert alert-danger" role="alert">
+	<p>{{ errorMessage }}</p>
+</div>
+{% endif %}
+
+{% if action.error.type != 'success' %}
+<div class="row">
+	<div class="col-lg-12">
+		<form class="form-horizontal well" role="form" method="post">
+			<fieldset>
+				<legend>{{ 'mata.global.username'|lang }}</legend>
+				<div class="form-group{% if 'username' in errors|keys %} has-error{% endif %}">
+					<label for="username" class="col-sm-3 control-label">{{ 'mata.global.username'|lang }}</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" name="username" id="username" placeholder="{{ 'mata.global.username'|lang }}">
+					</div>
+				</div>
+				<div class="form-group{% if errors %} has-warning{% endif %}">
+					<label for="panel" class="col-sm-3 control-label">Gruppen</label>
+					<div class="col-sm-6">
+						<div class="form-control" style="height:auto">
+							<div class="checkbox">
+								<input type="hidden" name="groups[]" value="3">
+								<label><input type="checkbox" checked disabled> Registered Users</label>
+							</div>
+							{% for group in groups %}
+							<div class="checkbox">
+								<label><input type="checkbox" name="groups[]" value="{{ group.groupID }}"> {{ group.groupName }}</label>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>{{ 'mata.global.email'|lang }}</legend>
+				<div class="form-group{% if 'email' in errors|keys %} has-error{% endif %}">
+					<label for="email" class="col-sm-3 control-label">{{ 'mata.global.email'|lang }}</label>
+					<div class="col-sm-6">
+						<input type="email" class="form-control" name="email" id="email" placeholder="{{ 'mata.global.email'|lang }}">
+					</div>
+				</div>
+				<div class="form-group{% if 'confirmEmail' in errors|keys %} has-error{% endif %}">
+					<label for="confirmEmail" class="col-sm-3 control-label">{{ 'mata.global.confirmEmail'|lang }}</label>
+					<div class="col-sm-6">
+						<input type="email" class="form-control" name="confirmEmail" id="confirmEmail" placeholder="{{ 'mata.global.confirmEmail'|lang }}">
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>{{ 'mata.global.password'|lang }}</legend>
+				<div class="form-group{% if 'password' in errors|keys %} has-error{% endif %}">
+					<label for="password" class="col-sm-3 control-label">{{ 'mata.global.password'|lang }}</label>
+					<div class="col-sm-6">
+						<input type="password" class="form-control" name="password" id="password" placeholder="{{ 'mata.global.password'|lang }}">
+					</div>
+				</div>
+				<div class="form-group{% if 'confirmPassword' in errors|keys %} has-error{% endif %}">
+					<label for="confirmPassword" class="col-sm-3 control-label">{{ 'mata.global.confirmPassword'|lang }}</label>
+					<div class="col-sm-6">
+						<input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="{{ 'mata.global.confirmPassword'|lang }}">
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-10">
+					<button type="submit" class="btn btn-default">{{ 'mata.global.button.login'|lang }}</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endif %}

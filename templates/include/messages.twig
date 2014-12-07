@@ -1,10 +1,12 @@
+<button type="button" class="btn btn-default btn-sm right visible-xs" data-toggle="collapse" data-target="#sidebar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
+
 {% include 'pageHeader.twig' with { 'pageTitle' : 'mata.global.messages'|lang } %}
 
 <div class="row">
-	<div class="col-lg-3">
+	<div class="col-sm-4 col-lg-3 collapse collapse-xs" id="sidebar">
 		{% include 'include/dashboard.sidebar.twig' with { 'sidebar' : 'messages' } %}
 	</div>
-	<div class="col-lg-9">
+	<div class="col-sm-8 col-lg-9">
 		{% if messages == false %}
 		<div class="alert alert-info" role="alert">
 			<p>{{ 'mata.user.messages.no'|lang }}</p>
@@ -13,13 +15,13 @@
 		<div class="messages">
 			<header class="head">
 				<h4 class="left">{{ 'mata.date.period.today'|lang }}</h4>
-				<a href="/" class="btn btn-default btn-sm right offset" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ 'mata.user.notification.markAllAsRead'|lang }}</a>
-				<a href="/" class="btn btn-default btn-sm right offset" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Nachricht löschen</a>
-				<a href="/" class="btn btn-default btn-sm right offset" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nachricht erstellen</a>
+				<a href="/" class="btn btn-default btn-sm right offset" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">{{ 'mata.user.notification.markAllAsRead'|lang }}</span></a>
+				<a href="/" class="btn btn-default btn-sm right offset hidden-xs" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <span class="hidden-sm">Nachricht löschen</span></a>
+				<a href="#compose" class="btn btn-default btn-sm right offset" role="button" data-toggle="modal" data-target="#compose"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nachricht erstellen</a>
 			</header>
 			<div class="entry bg-info">
 				<div class="media">
-					<div class="media-left media-middle"><input type="checkbox" data-object-id="123"></div>
+					<div class="media-left media-middle hidden-xs"><input type="checkbox" data-object-id="123"></div>
 					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
 					<div class="media-body media-middle">
 						<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a> <span class="label label-primary">Neu</span></h5>
@@ -29,7 +31,7 @@
 			</div>
 			<div class="entry">
 				<div class="media">
-					<div class="media-left media-middle"><input type="checkbox" data-object-id="123"></div>
+					<div class="media-left media-middle hidden-xs"><input type="checkbox" data-object-id="123"></div>
 					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
 					<div class="media-body media-middle">
 						<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a></h5>
@@ -39,7 +41,7 @@
 			</div>
 			<div class="entry">
 				<div class="media">
-					<div class="media-left media-middle"><input type="checkbox" data-object-id="123"></div>
+					<div class="media-left media-middle hidden-xs"><input type="checkbox" data-object-id="123"></div>
 					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
 					<div class="media-body media-middle">
 						<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a></h5>
@@ -54,7 +56,7 @@
 			</header>
 			<div class="entry">
 				<div class="media">
-					<div class="media-left media-middle"><input type="checkbox" data-object-id="123"></div>
+					<div class="media-left media-middle hidden-xs"><input type="checkbox" data-object-id="123"></div>
 					<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
 					<div class="media-body media-middle">
 						<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a></h5>
@@ -73,6 +75,36 @@
 		</div>
 		{% endif %}
 	</div>
+</div>
+
+<div class="modal fade" id="compose" tabindex="-1" role="dialog" aria-labelledby="composeLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Schließen</span></button>
+        <h4 class="modal-title" id="composeLabel">Neue Nachricht</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" method="post">
+          <div class="form-group">
+            <label for="empfaenger-name" class="control-label">Empfänger:</label>
+            <input type="text" class="form-control" id="empfaenger-name" name="recipient">
+          </div>
+          <div class="form-group">
+            <label for="nachricht-text" class="control-label">Nachricht:</label>
+            <textarea class="form-control" id="nachricht-text" name="message"></textarea>
+          </div>
+          <div class="form-group">
+          	<button type="submit" class="btn btn-primary" name="submit">Nachricht senden</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+        <button type="button" class="btn btn-primary" name="submit">Nachricht senden</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style type="text/css">

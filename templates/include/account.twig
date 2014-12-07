@@ -1,10 +1,12 @@
+<button type="button" class="btn btn-default btn-sm right visible-xs" data-toggle="collapse" data-target="#sidebar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></button>
+
 {% include 'pageHeader.twig' with { 'pageTitle' : 'mata.user.management'|lang } %}
 
 <div class="row">
-	<div class="col-lg-3">
+	<div class="col-sm-4 col-lg-3 collapse collapse-xs" id="sidebar">
 		{% include 'include/dashboard.sidebar.twig' with { 'sidebar' : 'account' } %}
 	</div>
-	<div class="col-lg-9">
+	<div class="col-sm-8 col-lg-9">
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#general" data-toggle="tab">{{ 'mata.global.general'|lang }}</a></li>
 			<li><a href="#security" data-toggle="tab">{{ 'mata.global.security'|lang }}</a></li>
