@@ -172,3 +172,11 @@ div.alert-default {
 div.alert-default:after {
 	content: "\e086";
 }
+
+/* collapse for small devs */
+@media (min-width: 767px) {
+	.collapse-xs {
+		display: block !important;
+		visibility: visible !important;
+	}
+}
