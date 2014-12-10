@@ -27,6 +27,12 @@ abstract class AbstractController implements IController {
 		$this->checkLanguage();
 		$this->addNavigation();
 
+		// check
+		$this->checkNotificationFlyout();
+
+		// add data
+		$this->addData();
+
 		// call default methods
 		$this->show();
 	}
@@ -47,7 +53,7 @@ abstract class AbstractController implements IController {
 		} else {
 			// prepare
 			$sql = "SELECT		*
-					FROM		".DB_PREFIX."_navigation
+					FROM		mata_navigation
 					ORDER BY	showOrder ASC";
 			$statement = Mata::getDB()->prepareStatement($sql);
 			$statement->execute();
@@ -80,6 +86,35 @@ abstract class AbstractController implements IController {
 		}
 
 		return $page;
+	}
+
+	public function addData() {
+		if (Mata::getUser() === null) return;
+
+		$sql = "SELECT		COUNT(notification.notificationID) as notificationCount
+				FROM		mata_user_to_notification user
+				LEFT JOIN	mata_notifications notification ON (user.notificationID = notification.notificationID)
+				WHERE		user.userID = ? AND notification.timeRead = 0";
+		$statement = Mata::getDB()->prepareStatement($sql);
+		$statement->execute(array(Mata::getUser()->userID));
+		
+		Mata::getTPL()->assign('notificationCount', $statement->fetchArray()['notificationCount']);
+	}
+
+	public function checkNotificationFlyout() {
+		$reference = isset(Request::getParams()['ref']) ? Request::getParams()['ref'] : '';
+		$objectID = isset(Request::getParams()['refid']) && is_numeric(Request::getParams()['refid']) ? Request::getParams()['refid'] : 0;
+
+		if ($reference != 'notyflyout') return;
+		
+		$sql = "UPDATE		mata_notifications noty
+				SET			noty.timeRead = ?
+				WHERE		noty.notificationID = ?";
+		$statement = Mata::getDB()->prepareStatement($sql);
+		$statement->execute(array(
+			TIME_NOW,
+			$objectID
+		));
 	}
 
 	/**

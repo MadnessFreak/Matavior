@@ -100,7 +100,16 @@ class LoginController extends AbstractController {
 		Mata::getSession()->register('userID', Mata::getSession()->user->userID);
 		Mata::getSession()->register('username', Mata::getSession()->user->username);
 
+		$sql = "UPDATE		mata_users user
+				SET			user.lastActivityTime = ?
+				WHERE		user.userID = ?";
+		$statement = Mata::getDB()->prepareStatement($sql);
+		$statement->execute(array(
+			TIME_NOW,
+			Mata::getSession()->user->userID
+		));
+
 		// refresh
-		header("Refresh: 3; " . (!empty($this->referer) ? $this->referer : '/dashboard'));
+		header("Refresh: 3; /dashboard"/* . (!empty($this->referer) ? $this->referer : '/dashboard')*/);
 	}
 }
