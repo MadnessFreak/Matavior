@@ -4,7 +4,7 @@
 define('TIME_NOW', time());
 
 // define version
-define('MATA_VERSION', '0.125.14');
+define('MATA_VERSION', '0.1210.14 Alpha');
 
 /**
 * Provides the application central class.
@@ -57,9 +57,9 @@ class Mata {
 		Mata::getTPL()->assign('SESSION', $_SESSION);
 		Mata::getTPL()->assign('cookie', $_COOKIE);
 
-		Mata::getTPL()->assign('notifications', array(
+		/*Mata::getTPL()->assign('notifications', array(
 			array('id' => 1, 'asd')
-			));
+			));*/
 
 		Mata::getTPL()->assign('messages', array(
 			array('id' => 1, 'asd')
@@ -71,6 +71,8 @@ class Mata {
 
 		// debug
 		Debug::add('SESSION', print_r($_SESSION, true));
+
+		
 
 		// display debug
 		if (self::debugModeIsEnabled()) Debug::display();
@@ -130,6 +132,49 @@ class Mata {
 		foreach ($defines as $key => $value) {
 			self::$templateObj->assign($key, $value);
 		}
+
+		// add subsearch
+		Mata::getTPL()->addFunction(new Twig_SimpleFunction('subsearch', function($key, $value, $array) {
+			foreach ($array as $sub) {
+				if (array_key_exists($key, $sub) && $sub[$key] == $value) return true;
+			}
+			return false;
+		}));
+
+		// add timeago
+		Mata::getTPL()->addFilter(new Twig_SimpleFilter('timeago', function($timestamp) {
+			$time = TIME_NOW - $timestamp;
+
+			$units = array (
+				31536000 => 'year',
+				2592000 => 'month',
+				604800 => 'week',
+				86400 => 'day',
+				3600 => 'hour',
+				60 => 'minute',
+				1 => 'second'
+			);
+
+			foreach ($units as $unit => $val) {
+				if ($time < $unit) continue;
+				$numberOfUnits = floor($time / $unit);
+				return ($val == 'second') ? 'a few seconds ago' : (($numberOfUnits>1) ? $numberOfUnits : 'a').' '.$val.(($numberOfUnits>1) ? 's' : '').' ago';
+			}
+
+			return 'just now';
+		}));
+
+		// add timeago
+		Mata::getTPL()->addFilter(new Twig_SimpleFilter('avatar', function($avatarID) {
+			if ($avatarID == 0) {
+				return "/images/avatar/default.png";
+			} else {
+				return "/images/avatar/upload/$avatarID.png";
+			}
+		}));
+
+		// add string loader
+		//Mata::getTPL()->addExtension(new Twig_Extension_StringLoader());
 	}
 
 	/**
@@ -144,8 +189,7 @@ class Mata {
 	 */
 	protected static function initLang() {
 		// set lang
-		//ata::setLang(empty(Mata::getSession()->lang) ? 'en' : Mata::getSession()->lang);
-		Mata::setLang(empty($_COOKIE['lang']) ? 'en' : $_COOKIE['lang']);
+		Mata::setLang(empty($_COOKIE['mata_lang']) ? 'en' : $_COOKIE['mata_lang']);
 		
 		// add filter
 		Mata::getTPL()->addFilter(new Twig_SimpleFilter('lang', function($key) {
@@ -193,7 +237,7 @@ class Mata {
 		self::$langObj = Language::load(SYS_DIR.'/Lang/'.$language.'.xml');
 
 		// set cookie
-		setcookie('lang', $language, time()+60*60*24*90, '/');
+		setcookie('mata_lang', $language, time() + 60 * 60 * 24 * 90, '/');
 
 		// assign lang info
 		Mata::getTPL()->assign('language', array(
