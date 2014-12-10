@@ -57,8 +57,7 @@
 		<item name="mata.global.gender.no"><![CDATA[No entry]]></item>
 		<item name="mata.global.gender.male"><![CDATA[Male]]></item>
 		<item name="mata.global.gender.female"><![CDATA[Female]]></item>
-		<item name="mata.global.footer"><![CDATA[<p>Made with love by <a href="http://github.com/MadnessFreak" target="_blank">MadnessFreak</a>.</p>
-				<p>Based on <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons from <a href="http://glyphicons.com" target="_blank">Glyphicons</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank">Google</a>.</p>]]></item>
+		<item name="mata.global.footer"><![CDATA[made with love by <a href="http://github.com/MadnessFreak" target="_blank">MadnessFreak</a>.<br>Based on <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons from <a href="http://glyphicons.com" target="_blank">Glyphicons</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank">Google</a>.]]></item>
 	</category>
 
 	<category name="mata.navigation">
@@ -71,13 +70,42 @@
 	</category>
 
 	<category name="mata.user">
+		<item name="wcf.user.confirmEmail"><![CDATA[Confirm Email]]></item>
+		<item name="wcf.user.confirmPassword"><![CDATA[Confirm Password]]></item>
+		<item name="wcf.user.confirmEmail.error.notEqual"><![CDATA[The entered email addresses do not match.]]></item>
+		<item name="wcf.user.confirmPassword.error.notEqual"><![CDATA[The entered passwords do not match.]]></item>
+		<item name="wcf.user.email"><![CDATA[Email]]></item>
+		<item name="wcf.user.email.error.notUnique"><![CDATA[Email is already in use.]]></item>
+		<item name="wcf.user.email.error.notValid"><![CDATA[Email is invalid.]]></item>
+		<item name="wcf.user.ipAddress"><![CDATA[IP address]]></item>
+		<item name="wcf.user.userAgent"><![CDATA[User Agent]]></item>
+		<item name="wcf.user.login"><![CDATA[Login]]></item>
+		<item name="wcf.user.login.data"><![CDATA[Credentials]]></item>
+		<item name="wcf.user.password.error.false"><![CDATA[The entered password is wrong.]]></item>
+		<item name="wcf.user.language"><![CDATA[Language]]></item>
+		<item name="wcf.user.language.description"><![CDATA[User interface language]]></item>
+		<item name="wcf.user.logout"><![CDATA[Logout]]></item>
+		<item name="wcf.user.logout.sure"><![CDATA[Do you really want to logout?]]></item>
+		<item name="wcf.user.password"><![CDATA[Password]]></item>
+		<item name="wcf.user.registrationDate"><![CDATA[Registration Date]]></item>
 		<item name="mata.user.management"><![CDATA[Account Management]]></item>
 	</category>
 
 	<category name="mata.user.notification">
 		<item name="mata.user.notification"><![CDATA[Notifications]]></item>
-		<item name="mata.user.notification.no"><![CDATA[You have no notifications.]]></item>
-		<item name="mata.user.notification.noMore"><![CDATA[No further notifications.]]></item>
+		<item name="mata.user.notification.empty"><![CDATA[You have no notifications.]]></item>
+		<item name="mata.user.notification.no"><![CDATA[No notifications.]]></item>
 		<item name="mata.user.notification.markAllAsRead"><![CDATA[Mark all as read]]></item>
+	</category>
+
+	<category name="mata.user.notification.events">
+		<item name="mata.user.notification.event.wall"><![CDATA[<a href="/members/profile/%2$s">%2$s</a> wrote on <a href="/members/profile/%3$s?tab=wall&entry=%4$d&ref=notyflyout&refid=%1d">your wall</a>.]]></item>
+		<item name="mata.user.notification.event.message"><![CDATA[<a href="/members/profile/%2$s">%2$s</a> send you a <a href="/messages/view/%4$d%5$s?ref=notyflyout&refid=%1d" onclick="javascript:readNoty(%1d)">message</a>.]]></item>
+	</category>
+
+	<category name="mata.user.event">
+		<item name="mata.user.event"><![CDATA[Event]]></item>
+		<item name="mata.user.event.test"><![CDATA[%username% thrown an test event.]]></item>
+		<item name="mata.user.event.wall"><![CDATA[<a href="/members/profile/%username%">%username%</a> wrote on <a href="/members/profile/%objectData%">%objectData%</a>'s <a href="/members/profile/%objectData%?tab=wall&entry=%objectID%">wall</a>.]]></item>
 	</category>
 </language>

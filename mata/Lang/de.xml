@@ -57,8 +57,7 @@
 		<item name="mata.global.gender.no"><![CDATA[Keine Angabe]]></item>
 		<item name="mata.global.gender.male"><![CDATA[Männlich]]></item>
 		<item name="mata.global.gender.female"><![CDATA[Weiblich]]></item>
-		<item name="mata.global.footer"><![CDATA[<p>Mit Liebe erstellt von <a href="http://github.com/MadnessFreak" target="_blank">MadnessFreak</a>.</p>
-				<p>Basierend auf <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons von <a href="http://glyphicons.com" target="_blank">Glyphicons</a>. Schriftarten von <a href="http://www.google.com/webfonts" target="_blank">Google</a>.</p>]]></item>
+		<item name="mata.global.footer"><![CDATA[mit Liebe erstellt von <a href="http://github.com/MadnessFreak" target="_blank">MadnessFreak</a>.<br>Basierend auf <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>. Icons von <a href="http://glyphicons.com" target="_blank">Glyphicons</a>. Schriftarten von <a href="http://www.google.com/webfonts" target="_blank">Google</a>.]]></item>
 	</category>
 
 	<category name="mata.navigation">
@@ -71,6 +70,24 @@
 	</category>
 
 	<category name="mata.user">
+		<item name="wcf.user.confirmEmail"><![CDATA[Email-Adresse wiederholen]]></item>
+		<item name="wcf.user.confirmPassword"><![CDATA[Kennwort wiederholen]]></item>
+		<item name="wcf.user.confirmEmail.error.notEqual"><![CDATA[Die eingegebenen Email-Adressen sind nicht identisch.]]></item>
+		<item name="wcf.user.confirmPassword.error.notEqual"><![CDATA[Die eingegebenen Kennwörter sind nicht identisch.]]></item>
+		<item name="wcf.user.email"><![CDATA[Email-Adresse]]></item>
+		<item name="wcf.user.email.error.notUnique"><![CDATA[Diese Email-Adresse ist bereits durch einen anderen Benutzer vergeben.]]></item>
+		<item name="wcf.user.email.error.notValid"><![CDATA[Sie haben eine ungültige Email-Adresse eingegeben.]]></item>
+		<item name="wcf.user.ipAddress"><![CDATA[IP-Adresse]]></item>
+		<item name="wcf.user.userAgent"><![CDATA[Browser-Kennung]]></item>
+		<item name="wcf.user.login"><![CDATA[Anmeldung]]></item>
+		<item name="wcf.user.login.data"><![CDATA[Zugangsdaten]]></item>
+		<item name="wcf.user.password.error.false"><![CDATA[Dieses Kennwort ist falsch.]]></item>
+		<item name="wcf.user.language"><![CDATA[Sprache]]></item>
+		<item name="wcf.user.language.description"><![CDATA[Sprache der Benutzeroberfläche]]></item>
+		<item name="wcf.user.logout"><![CDATA[Abmelden]]></item>
+		<item name="wcf.user.logout.sure"><![CDATA[Wollen Sie sich wirklich abmelden?]]></item>
+		<item name="wcf.user.password"><![CDATA[Kennwort]]></item>
+		<item name="wcf.user.registrationDate"><![CDATA[Registrierungsdatum]]></item>
 		<item name="mata.user.management"><![CDATA[Benutzerverwaltung]]></item>
 	</category>
 
@@ -87,5 +104,10 @@
 		<item name="mata.user.notification.no"><![CDATA[Sie haben keine Benachrichtigungen.]]></item>
 		<item name="mata.user.notification.noMore"><![CDATA[Keine weiteren Benachrichtigungen.]]></item>
 		<item name="mata.user.notification.markAllAsRead"><![CDATA[Alle als gelesen markieren]]></item>
+	</category>
+
+	<category name="mata.user.notification.events">
+		<item name="mata.user.notification.event.wall"><![CDATA[<a href="/members/profile/%1$s">%1$s</a> hat an Ihre <a href="/members/profile/%1$s?tab=wall&entry=%2$d">Pinnwand</a> geschrieben.]]></item>
+		<item name="mata.user.notification.event.message"><![CDATA[<a href="/members/profile/%1$s">%1$s</a> hat Ihnen eine <a href="/messages/view/%2$d%3$s">Nachricht</a> gesendet.]]></item>
 	</category>
 </language>
