@@ -1,0 +1,4 @@
+<div>
+	<div clasS="framed"><img src="{{ member.avatarID|avatar }}" class="avatar" alt="User Avatar" width="54" height="54"></div>
+	<div><h5><a href="/members/profile/{{ member.username }}">{{ member.username }}</a> <div class="circle {{ member.session ? ' online' : 'offline' }}"></div><br>{{ member.userOnlineMarking|format(member.groupName)|raw }}</h5></div>
+</div>

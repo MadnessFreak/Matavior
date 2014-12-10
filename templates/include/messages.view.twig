@@ -1,0 +1,51 @@
+{% set messageAuthorID = '7' %}
+{% set messageAuthorName = 'Arktos' %}
+{% set messageTitle = 'Lorem ipsum dolor sit' %}
+<div class="messages">
+	<header class="head">
+		<h4 class="left">{{ messageTitle }}</h4>
+		<a href="/" class="btn btn-default btn-sm right offset hidden-xs" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <span class="hidden-sm">Nachricht löschen</span></a>
+		<a href="#reply" class="btn btn-default btn-sm right offset" role="button" data-toggle="modal" data-target="#reply"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Antworten</a>
+	</header>
+	<div class="entry">
+		<div class="media">
+			<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+			<div class="media-body">
+				<h4 class="media-heading"><a href="/blog/entry/123-Lorem-ipsum-dolor-sit">Lorem ipsum dolor sit</a></h4>
+				<small><a href="/members/profile/MadnessFreak">MadnessFreak</a> - <time timestamp="1414972800">Nov 3rd 2014</time></small>
+			</div>
+		</div>
+		<hr>
+		<div class="preview">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br><br>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+	</div>
+</div>
+
+<div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="composeLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Schließen</span></button>
+				<h4 class="modal-title" id="composeLabel">Antwort schreiben</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" method="post">
+					<div class="form-group">
+						<label for="empfaenger-name" class="control-label">Empfänger:</label>
+						<input type="text" class="form-control" id="empfaenger-name" name="recipient" value="{{ messageAuthorName }}">
+					</div>
+					<div class="form-group">
+						<label for="nachricht-text" class="control-label">Nachricht:</label>
+						<textarea class="form-control" id="nachricht-text" name="message" value="RE: {{ messageTitle }}"></textarea>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary" name="submit">Nachricht senden</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+				<button type="button" class="btn btn-primary" name="submit">Nachricht senden</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,13 +1,232 @@
-<header class="headline">
-	<h3>Profile of "MadnessFreak"</h3>
-	<hr>
-</header>
+{#% include 'pageHeader.twig' with { 'pageTitle' : 'Profile of "' ~ member.username ~ '"' } %#}
 
-<div class="row">
-	<div class="col-lg-12">
+<div class="profile row">
+	<div class="col-sm-12">
 		<div class="well">
-			<h4>MadnessFreak</h4>
-			<p>Lorem ipsum</p>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-3 profile-pic hidden-xs">
+							<img src="{{ member.avatarID|avatar }}">
+							<div class="padding-10">
+								<h4 class="font-md"><strong>1,543</strong><br><small>Followers</small></h4>
+								<h4 class="font-md"><strong>419</strong><br><small>Connections</small></h4>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<h1 style="margin-bottom:0;">{{ member.username }}</h1>
+							<h4 style="margin-top:0; color: gray;">{{ member.groupName }}</h4>
+
+							<ul class="list-unstyled">
+								<li>
+									<p class="text-muted">
+										<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp;Email: <a href="mailto:{{ member.email }}">{{ member.email }}</a>
+									</p>
+								</li>
+								<li>
+									<p class="text-muted">
+										<span class="glyphicon glyphicon-gift" aria-hidden="true"></span>&nbsp;&nbsp;Brithday: <span class="txt-color-darken">{{ member.birthday|date('mata.date.dateFormat'|lang) }}</span>
+									</p>
+								</li>
+								<!--<li>
+									<p class="text-muted">
+										<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;&nbsp;Account status: <span class="txt-color-darken">{{ member.banned ? 'Blocked' : 'Active' }}</span>
+									</p>
+								</li>
+								<li>
+									<p class="text-muted">
+										<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&nbsp;&nbsp;Location: <span class="txt-color-darken">Im Keller</span>
+									</p>
+								</li>-->
+								<li>
+									<p class="text-muted">
+										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;&nbsp;Last activity: <span class="txt-color-darken">{{ member.lastActivityTime|date('mata.date.dateFormat'|lang) }}</span>
+									</p>
+								</li>
+								<li>
+									<p class="text-muted">
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;&nbsp;Registration date: <span class="txt-color-darken">{{ member.registrationDate|date('mata.date.dateFormat'|lang) }}</span>
+									</p>
+								</li>
+							</ul>
+							<br>
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active"><a href="#about" role="tab" data-toggle="tab">About</a></li>
+								<li role="presentation"><a href="#wall" role="tab" data-toggle="tab">Pinnwand</a></li>
+								<li role="presentation"><a href="#recentActivity" role="tab" data-toggle="tab">Letzte Aktivitäten</a></li>
+							</ul>
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="about">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</div>
+								<div role="tabpanel" class="tab-pane tab-list" id="wall">
+									<div class="entry" data-object-id="new">
+										<div class="media">
+											<a href="/members/profile/{{ user.username }}" class="media-left framed"><img src="{{ user.avatarID|avatar }}" alt="User Avatar" data-toggle="tooltip" data-placement="top" title="Kommentieren als {{ user.username }}"></a>
+											<div class="media-body media-middle">
+												<form role="form" class="clearfix" method="post">
+													<textarea class="form-control" rows="2" maxlength="512" name="content" placeholder="Kommentar schreiben ..."></textarea>
+													<input type="hidden" name="userID" value="{{ member.userID }}">
+													<input type="hidden" name="authorID" value="{{ user.userID }}">
+													<input type="hidden" name="action" value="postonwall">
+													<input type="submit" class="btn btn-sm" value="Abesenden">
+												</form>
+											</div>
+										</div>
+									</div>
+									{% for entry in wall %}
+										<div class="entry" data-object-id="{{ entry.entryID }}">
+											<div class="media">
+												<a href="/members/profile/{{ entry.authorName }}" class="media-left framed"><img src="{{ entry.authorAvatarID|avatar }}" alt="User Avatar" data-toggle="tooltip" data-placement="top" title="Profil von {{ entry.authorName }} anzeigen"></a>
+												<div class="media-body media-middle">
+													<h5 class="media-heading"><small><a href="/members/profile/{{ entry.authorName }}">{{ entry.authorName }}</a> - <time timestamp="{{ entry.timeCreated }}">{{ entry.timeCreated|timeago }}</time></small><small class="right hidden-xs ofs-5"><a href="/members/profile/{{ member.username }}?tab=wall&entry={{ entry.entryID }}" data-toggle="tooltip" data-placement="top" title="Click right to copy direct link">#{{ loop.revindex }}</a></small></h5>
+													<p>{{ entry.content }}</p>
+												</div>
+											</div>
+										</div>
+									{% endfor %}
+								</div>
+								<div role="tabpanel" class="tab-pane tab-list" id="recentActivity">
+									{% for activity in activities %}
+										<div class="entry">
+											<div class="media">
+												<div class="media-left framed"><img src="{{ member.avatarID|avatar }}" alt="User Avatar"></div>
+												<div class="media-body media-middle">
+													<h5 class="media-heading"><small><a href="/members/profile/{{ member.username }}">{{ member.username }}</a> - <time timestamp="{{ activity.timeTriggered }}">{{ activity.timeTriggered|timeago }}</time></small><small class="right hidden-xs ofs-5"></small></h5>
+													<p>{{ activity.eventName|lang|replace({'%activityID%':activity.activityID, '%username%':member.username, '%objectID%':activity.objectID, '%objectData%':activity.objectData})|raw }}</p>
+												</div>
+											</div>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<h1 class="mar-0"><small>Actions</small></h1>
+							<ul class="list-inline friends-list">
+								<li><button type="button" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="Follow {{ member.username }}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Follow</button></li>
+								<li><button type="button" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="Add {{ member.username }} as friend"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Connect</button></li>
+								<li><button type="button" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="Send {{ member.username }} a message"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Message</button></li>
+							</ul>
+							<h1><small>Friends</small></h1>
+							<ul class="list-inline friends-list">
+								<li><img src="/images/avatar/default.png" alt="friend-1">
+								</li>
+								<li><img src="/images/avatar/default.png" alt="friend-2">
+								</li>
+								<li><img src="/images/avatar/default.png" alt="friend-3">
+								</li>
+								<li><img src="/images/avatar/default.png" alt="friend-4">
+								</li>
+								<li><img src="/images/avatar/default.png" alt="friend-5">
+								</li>
+								<li><img src="/images/avatar/default.png" alt="friend-6">
+								</li>
+								<li>
+									<a href="javascript:void(0);">413 more</a>
+								</li>
+							</ul>
+
+							<h1><small>Recent visitors</small></h1>
+							<ul class="list-inline friends-list">
+								<li><img src="/images/avatar/default.png" alt="friend-1">
+								</li>
+								<li><img src="/images/avatar/default.png" alt="friend-2">
+								</li>
+								<li><img src="/images/avatar/default.png" alt="friend-3">
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
+
+<!--
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="media well">
+			<div class="media-left framed"><img src="/images/avatar/default-big.png" alt="User Avatar" style="width:128px; height:128px;"></div>
+			<div class="media-body">
+				<h4 class="media-heading">
+					MadnessFreak<br>
+					<small>Administrator</small>
+				</h4>
+
+				<small>Regstiert seit 04.12.2014</small>
+			</div>
+			</div>
+	</div>
+</div>
+
+-->
+
+<style type="text/css">
+.profile .action {
+position: absolute;
+bottom: 0;
+right: 0;
+margin: 0 30px 15px 0;
+float: right;
+}
+.profile .cover {
+background-color: #E8E8E8;
+min-height: 200px;
+max-height: 200px;
+overflow: hidden;
+width: 100%;
+}
+.profile .cover > img {
+display: block;
+max-width: 100%;
+height: auto;
+}
+
+.profile .profile-pic {
+text-align: right;
+}
+.profile .profile-pic>img {
+border-radius: 0;
+position: relative;
+border: 5px solid #fff;
+top: 0px;
+left: 10px;
+display: inline-block;
+text-align: right;
+z-index: 4;
+max-width: 100px;
+}
+
+
+.profile .friends-list li {
+margin-bottom: 10px;
+margin-right: 3px;
+padding: 0;
+}
+
+.profile .friends-list img {
+width: 35px;
+border: 1px solid #fff;
+outline: 1px solid #bfbfbf;
+}
+
+.profile .tab-list > div.entry { 
+	border-top: 1px solid #ddd;
+	padding: 5px 0 5px 0;
+	overflow: hidden;
+}
+.profile .tab-list > div.entry:nth-child(even) { background-color: #f9f9f9; }
+.profile .tab-list > div.entry:first-of-type { border: 0px; }
+.profile .tab-list > div.entry:hover { background-color: #ecf0f1; }
+.profile .tab-list > div.entry > div { padding: 5px; }
+.profile .tab-list > div.entry > hr { margin: 2px; }
+.profile .tab-list > div.entry img { width: 40px; height: 40px; }
+
+.profile .media-body {
+	width: 100%;
+}
+.profile .btn {
+	margin-top: 5px;
+}
+</style>

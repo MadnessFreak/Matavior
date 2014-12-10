@@ -17,6 +17,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if SESSION.loggedIn %}
+          <li><a href="/account" class="notify"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+          <li><a href="/messages" class="notify"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>{% if messageCount > 0 %}<span class="badge-notify">{{ messageCount }}</span>{% endif %}</a></li>
+          <li><a href="/notifications" class="notify"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>{% if notificationCount > 0 %}<span class="badge-notify">{{ notificationCount }}</span>{% endif %}</a></li>
           <li><span>{{ 'mata.global.welcome'|lang }} <a href="/members/profile/{{ SESSION.username }}">{{ SESSION.username }}</a></span></li>
           <li><a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {{ 'mata.global.logout'|lang }}</a></li>
         {% else %}

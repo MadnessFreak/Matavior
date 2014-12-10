@@ -1,0 +1,9 @@
+<div class="entry{{ notification.timeRead == 0 ? ' highlight' : '' }}">
+	<div class="media">
+		<a href="/members/profile/{{ notification.authorName }}" class="media-left framed"><img src="{{ notification.authorAvatarID|avatar }}" alt="User Avatar"></a>
+		<div class="media-body media-middle">
+			<h5 class="media-heading">{{ notification.eventName|lang|format(notification.notificationID, notification.authorName, user.username, notification.objectID, notification.objectData)|raw }}</h5>
+			<small><time timestamp="{{ notification.timeTriggered }}">{{ notification.timeTriggered|timeago }}</time></small>
+		</div>
+	</div>
+</div>

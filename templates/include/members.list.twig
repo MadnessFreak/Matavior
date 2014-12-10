@@ -1,15 +1,10 @@
-<header class="headline">
-	<h3>Members <span class="badge">{{ membersCount }}</span></h3>
-</header>
+{% include 'pageHeader.twig' with { 'pageTitle' : 'Members <span class="badge">' ~ membersCount ~ '</span>' } %}
 
 {% include 'pagination.twig' %}
 
 <div class="members">
 	{% for member in members|slice(membersStart,membersEnd) %}
-	<div>
-		<div><img src="/images/avatar/default.png"></div>
-		<div><h5><a href="/members/profile/{{ member.username }}">{{ member.username }}</a>&nbsp;{{ member.session ? '<span class="label label-success">Online</span>' : '<span class="label label-default">Offline</span>' }}<br><small>{{ member.userOnlineMarking|format(member.groupName)|raw }}</small></h5></div>
-	</div>
+		{% include 'include/members.listentry.twig' %}
 	{% endfor %}
 </div>
 

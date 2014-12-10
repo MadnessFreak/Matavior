@@ -1,0 +1,67 @@
+{% if messages == false %}
+<div class="alert alert-info" role="alert">
+	<p>{{ 'mata.user.messages.no'|lang }}</p>
+</div>
+{% else %}
+<div class="messages">
+	<header class="head">
+		<h4 class="left">{{ 'mata.date.period.today'|lang }}</h4>
+		<a href="/" class="btn btn-default btn-sm right offset" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">{{ 'mata.user.notification.markAllAsRead'|lang }}</span></a>
+		<a href="/" class="btn btn-default btn-sm right offset hidden-xs" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <span class="hidden-sm">Nachricht löschen</span></a>
+		<a href="#compose" class="btn btn-default btn-sm right offset" role="button" data-toggle="modal" data-target="#compose"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nachricht erstellen</a>
+	</header>
+	<div class="entry bg-info">
+		<div class="media">
+			<div class="media-left media-middle hidden-xs"><input type="checkbox" data-object-id="123"></div>
+			<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+			<div class="media-body media-middle">
+				<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a> <span class="label label-primary">Neu</span></h5>
+				<small>Von <a href="/members/profile/MadnessFreak">MadnessFreak</a> vor <time timestamp="1414972800">15 minutes</time></small>
+			</div>
+		</div>
+	</div>
+	<div class="entry">
+		<div class="media">
+			<div class="media-left media-middle hidden-xs"><input type="checkbox" data-object-id="123"></div>
+			<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+			<div class="media-body media-middle">
+				<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a></h5>
+				<small>Von <a href="/members/profile/MadnessFreak">MadnessFreak</a> vor <time timestamp="1414972800">15 minutes</time></small>
+			</div>
+		</div>
+	</div>
+	<div class="entry">
+		<div class="media">
+			<div class="media-left media-middle hidden-xs"><input type="checkbox" data-object-id="123"></div>
+			<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+			<div class="media-body media-middle">
+				<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a></h5>
+				<small>Von <a href="/members/profile/MadnessFreak">MadnessFreak</a> vor <time timestamp="1414972800">15 minutes</time></small>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="messages">
+	<header class="head">
+		<h4>{{ 'mata.date.period.yesterday'|lang }}</h4>
+	</header>
+	<div class="entry">
+		<div class="media">
+			<div class="media-left media-middle hidden-xs"><input type="checkbox" data-object-id="123"></div>
+			<a href="/members/profile/MadnessFreak" class="media-left framed"><img src="/images/avatar/default.png" alt="User Avatar"></a>
+			<div class="media-body media-middle">
+				<h5 class="media-heading"><a href="/messages/view/123-Lorem-ipsum">Lorem ipsum dolor sit</a></h5>
+				<small>Von <a href="/members/profile/MadnessFreak">MadnessFreak</a> <time timestamp="1414972800">Gestern</time></small>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="messages">
+	<header class="head">
+		<h4>{{ 'mata.date.period.older'|lang }}</h4>
+	</header>
+	<div class="alert alert-default" role="alert">
+		<p>{{ 'mata.user.messages.noMore'|lang }}</p>
+	</div>
+</div>
+{% endif %}

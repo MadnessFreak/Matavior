@@ -4,6 +4,8 @@
 	{% include 'include/members.profile.twig' %}
 {% elseif REQUEST_ACTION == 'add' %}
 	{% include 'include/members.add.twig' %}
+	{% elseif REQUEST_ACTION == 'team' %}
+	{% include 'include/members.team.twig' %}
 {% else %}
 	{% include 'illegalLink.twig' %}
 {% endif %}
