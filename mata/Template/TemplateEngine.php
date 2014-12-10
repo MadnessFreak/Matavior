@@ -63,6 +63,24 @@ class TemplateEngine {
 	public function addFilter($name) {
 		$this->engine->addFilter($name);
 	}
+
+	/**
+	 * Registers a Function.
+	 * 
+	 * @param	string	name
+	 */
+	public function addFunction($name) {
+		$this->engine->addFunction($name);
+	}
+
+	/**
+	 * Registers a Extension.
+	 * 
+	 * @param	string	name
+	 */
+	public function addExtension($name) {
+		$this->engine->addExtension($name);
+	}
 	
 	/**
 	 * Displays the template.
