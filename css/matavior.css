@@ -37,6 +37,11 @@ form fieldset legend {
 	font-size: 15px;
 }
 
+/* Avatar online status */
+img.avatar { border-right: 4px solid #999; }
+img.avatar.online { border-right: 4px solid #5cb85c; }
+
+/* Headline */
 .headline {
 	margin-top: 0;
 	overflow: hidden;
@@ -48,6 +53,7 @@ form fieldset legend {
 	margin-top: 0px !important;
 }
 
+/* Breadcrumb */
 .breadcrumb {
 	background-color: #ecf0f1 !important;
 	margin-top: 20px;
@@ -61,15 +67,18 @@ form fieldset legend {
 	color: #428bca;
 }
 
+/* Pagination */
 .pagination {
 	margin: 0 !important;
 }
 
+/* Container */
 .container .center {
   padding: 40px 15px;
   text-align: center;
 }
 
+/* Col */
 .col-pad-5 {
 	padding: 0px !important;
 	padding-right: 5px !important;
@@ -78,6 +87,7 @@ form fieldset legend {
 	padding: 0 !important;
 }
 
+/* Tab */
 .tab-content {
 	border: 1px solid #e3e3e3;
 	border-top: 0;
@@ -86,6 +96,7 @@ form fieldset legend {
 	min-height: 20px;
 }
 
+/* Navigation */
 .nav > li > span {
 	position: relative;
 	display: block;
@@ -97,12 +108,14 @@ form fieldset legend {
 	color: #fff;
 }
 
+/* Framed image */
 .framed > img {
 	background-color: #ffffff;
 	border: 1px solid #cccccc;
 	padding: 1px;
 }
 
+/* Direction helper */
 .left {
 	float: left;
 }
@@ -112,7 +125,14 @@ form fieldset legend {
 .left.offset, .right.offset {
 	margin-left: 5px;
 }
+.right.ofs-5, {
+	margin-right: 5px;
+}
+.mar-0 {
+	margin: 5px;
+}
 
+/* Icon */
 .iconFlag {
 	margin-right: 5px;
 }
@@ -121,6 +141,7 @@ form fieldset legend {
 background-color: #d9edf7 !important;
 }
 
+/* Alerts */
 div.alert {
 	position: relative;
 	padding: 11px 14px 11px 48px !important;
@@ -179,4 +200,54 @@ div.alert-default:after {
 		display: block !important;
 		visibility: visible !important;
 	}
+}
+
+.circle {
+    width: 11px;
+    height: 11px;
+    -moz-border-radius: 50%; 
+    -webkit-border-radius: 50%; 
+    border-radius: 50%;
+    background: #222;
+    display: inline-block;
+}
+.circle.online {
+	background: #5cb85c;
+}
+.circle.offline {
+	background: #ddd;
+}
+
+.highlight {
+	color: #000 !important;
+	background-color: #fff8d3 !important;
+}
+.highlight:hover {
+	background-color: #fff5be !important;
+}
+
+.badge-notify {
+	display: inline-block;
+	min-width: 10px;
+	padding: 3px 5px;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 0.9;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	background-color: red;
+	border-radius: 10px;
+	position: relative;
+	top: -30px !important;
+	left: 8px !important;
+}
+.nav > li > a.notify {
+	width: 15px !important;
+	height: 50px !important;
+	//padding: 15px 20px !important;
+}
+.nav > li > a.notify.on {
+	//padding: 15px 5px 0px 0px !important;
 }
