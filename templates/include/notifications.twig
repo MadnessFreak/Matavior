@@ -9,7 +9,7 @@
 	<div class="col-sm-8 col-lg-9">
 		{% if notifications == false %}
 		<div class="alert alert-info" role="alert">
-			<p>{{ 'mata.user.notification.no'|lang }}</p>
+			<p>{{ 'mata.user.notification.empty'|lang }}</p>
 		</div>
 		{% else %}
 		<div class="notifications">
@@ -21,7 +21,7 @@
 				{% include 'include/notifications.entry.twig' %}
 			{% else %}
 				<div class="alert alert-default" role="alert">
-					<p>{{ 'mata.user.notification.no'|lang }}</p>
+					<p>{{ 'mata.user.notification.noToday'|lang }}</p>
 				</div>
 			{% endfor %}
 		</div>
@@ -33,7 +33,7 @@
 				{% include 'include/notifications.entry.twig' %}
 			{% else %}
 				<div class="alert alert-default" role="alert">
-					<p>{{ 'mata.user.notification.no'|lang }}</p>
+					<p>{{ 'mata.user.notification.noYesterday'|lang }}</p>
 				</div>
 			{% endfor %}
 		</div>
@@ -41,11 +41,11 @@
 			<header class="head">
 				<h4>{{ 'mata.date.period.older'|lang }}</h4>
 			</header>
-			{% for notification in notifications if notification.timeTriggered|date('Y-m-d') == now|date_modify("-2 day")|date('Y-m-d') %}
+			{% for notification in notifications if notification.timeTriggered|date('Y-m-d') <= now|date_modify("-2 day")|date('Y-m-d') %}
 				{% include 'include/notifications.entry.twig' %}
 			{% else %}
 				<div class="alert alert-default" role="alert">
-					<p>{{ 'mata.user.notification.no'|lang }}</p>
+					<p>{{ 'mata.user.notification.noFurther'|lang }}</p>
 				</div>
 			{% endfor %}
 		</div>

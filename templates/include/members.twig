@@ -2,6 +2,8 @@
 	{% include 'include/members.list.twig' %}
 {% elseif REQUEST_ACTION == 'profile' %}
 	{% include 'include/members.profile.twig' %}
+{% elseif REQUEST_ACTION == 'online' %}
+	{% include 'include/members.online.twig' %}
 {% elseif REQUEST_ACTION == 'add' %}
 	{% include 'include/members.add.twig' %}
 	{% elseif REQUEST_ACTION == 'team' %}

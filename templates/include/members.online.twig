@@ -1,0 +1,30 @@
+{% include 'pageHeader.twig' with { 'pageTitle' : 'Members Online <span class="badge">' ~ membersCount ~ '</span>' } %}
+
+<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>User</th>
+				<th>Session</th>
+				<th>Ip-Address</th>
+				<th>User Agent</th>
+				<th>Request URL</th>
+				<th>Request Method</th>
+				<th>Last Activity</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for member in members %}
+			<tr>
+				<td>{{ (member.userID ? '<a href="/members/profile/' ~ member.username ~ '">' ~ member.username ~ '</a>' : '<i>Guest</i>')|raw }}</td>
+				<td><small>{{ member.sessionID }}</small></td>
+				<td>{{ member.ipAddress }}</td>
+				<td>{{ member.userAgent }}</td>
+				<td>{{ member.requestURI }}</td>
+				<td>{{ member.requestMethod }}</td>
+				<td>{{ member.lastActivityTime|timeago }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
