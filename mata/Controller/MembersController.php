@@ -21,6 +21,10 @@ class MembersController extends AbstractController {
 			$controller = new MembersTeamController();
 			$controller->init();
 			return;
+		} else if (Request::getAction() == 'online') {
+			$controller = new MembersOnlineController();
+			$controller->init();
+			return;
 		} else if (Request::getAction() == 'profile') {
 			$controller = new MembersProfileController();
 			$controller->init();
