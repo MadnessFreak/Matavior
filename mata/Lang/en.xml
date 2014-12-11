@@ -95,6 +95,9 @@
 		<item name="mata.user.notification"><![CDATA[Notifications]]></item>
 		<item name="mata.user.notification.empty"><![CDATA[You have no notifications.]]></item>
 		<item name="mata.user.notification.no"><![CDATA[No notifications.]]></item>
+		<item name="mata.user.notification.noToday"><![CDATA[No notifications for today.]]></item>
+		<item name="mata.user.notification.noYesterday"><![CDATA[No notifications for yesterday.]]></item>
+		<item name="mata.user.notification.noFurther"><![CDATA[No further notifications.]]></item>
 		<item name="mata.user.notification.markAllAsRead"><![CDATA[Mark all as read]]></item>
 	</category>
 
